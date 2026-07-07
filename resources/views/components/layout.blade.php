@@ -22,8 +22,8 @@
                 </div>
             </a>
             <ul>
-                <li><a href="/">Nos races</a></li>
-                <li><a href="/">Guide de l'adoption</a></li>
+                <li><a href="/nos-races">Nos races</a></li>
+                <li><a href="/le-guide-de-l-adoption">Guide de l'adoption</a></li>
                 <li><a href="/">Le coin conseil</a></li>
                 <li><a href="/">Nous contacter</a></li>
             </ul>
@@ -42,25 +42,25 @@
             </section>
             
             <section>
-                <h4>Navigation</h4>
+                <h5>Navigation</h5>
                 <ul>
                     <li><a href="/">Accueil</a></li>
-                    <li><a href="/">Nos races</a></li>
-                    <li><a href="/">Guide de l'adoption</a></li>
+                    <li><a href="/nos-races">Nos races</a></li>
+                    <li><a href="/le-guide-de-l-adoption">Guide de l'adoption</a></li>
                     <li><a href="/">Le coin conseil</a></li>
                     <li><a href="/">Contact</a></li>
                 </ul>
             </section>
             
             <section>
-                <h4>Nous retrouver</h4>
+                <h5>Nous retrouver</h5>
                 <address>
                     <div><i class="bi bi-telephone" aria-hidden="true"></i> <span>+33 6 00 00 00 00</span></div>
                     <div><a href="mailto:elevageforetdesreves@gmail.com"><i class="bi bi-envelope" aria-hidden="true"></i> elevageforetdesreves@gmail.com</a></div>
                     <div><i class="bi bi-geo-alt" aria-hidden="true"></i> <span>139 VC Cappelle Straete, 59470 Volckerinckhove</span></div>
                 </address>
                 <div>
-                    <h3>Horaires d'ouverture :</h3>
+                    <h6>Horaires d'ouverture :</h6>
                     <p>Lun - Sam · Sur RDV</p>
                 </div>
             </section>

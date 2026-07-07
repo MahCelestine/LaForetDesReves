@@ -11,9 +11,9 @@
     </section>
     <section>
         <div>
-            <h2>Nos races</h2>
-            <h1>Trois races d'exception</h1>
-            <h3>Chacune sélectionnée pour ses qualités caractérielles, sa santé et ses aptitude </h3>
+            <h3>Nos races</h3>
+            <h2>Trois races d'exception</h2>
+            <h4>Chacune sélectionnée pour ses qualités caractérielles, sa santé et ses aptitude </h4>
         </div>
         <div>
             <div>
@@ -56,9 +56,9 @@
     </section>
     <section>
         <div>
-            <h2>Notre histoire</h2>
-            <h1>Une famille, une passion partagée</h1>
-            <h3>Chacune sélectionnée pour ses qualités caractérielles, sa santé et ses aptitude </h3>
+            <h3>Notre histoire</h3>
+            <h2>Une famille, une passion partagée</h2>
+            <h4>Chacune sélectionnée pour ses qualités caractérielles, sa santé et ses aptitude </h4>
         </div>
         <div>
             <img src="" alt="photo des membres de l'élevage" />
@@ -88,7 +88,7 @@
         <div>
             <div>
                 <div>
-                    <i></i>
+                    <img src="{{ asset('images/icon/Vector.png') }}" aria-hidden="true">
                     <h4>Élevage certifié <span>LOF</span></h4>
                 </div>
                 <p>Tous nos reproducteurs sont inscrits au Livre des Origines Français et testés génétiquement selon les
@@ -96,7 +96,7 @@
             </div>
             <div>
                 <div>
-                    <i></i>
+                    <img src="{{ asset('images/icon/Heart with Pulse.png') }}" aria-hidden="true">
                     <h4>Suivis de santé <span>rigoureux</span></h4>
                 </div>
                 <p>Dysplasie, cardiopathies héréditaires, tests ADN — nos protocoles préventifs garantissent la santé de
@@ -104,7 +104,7 @@
             </div>
             <div>
                 <div>
-                    <i></i>
+                    <img src="{{ asset('images/icon/Users.png') }}" aria-hidden="true">
                     <h4>Socilisé le <span>chiot</span></h4>
                 </div>
                 <p>Dès la naissance, des stimulations sensorielle régulière et des expositions variées à d’autres
@@ -112,7 +112,7 @@
             </div>
             <div>
                 <div>
-                    <i></i>
+                    <img src="{{ asset('images/icon/Heart.png') }}" aria-hidden="true">
                     <h4>Suivis post-<span>adoption</span></h4>
                 </div>
                 <p>Élevés avec amour, nous suivons l'évolution de nos chiots avec grand plaisir. Nous aimons recevoir de
