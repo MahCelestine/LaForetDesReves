@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,6 +7,22 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-title: 'DM Serif Display', serif;
+    --font-text: 'Plus Jakarta Sans', sans-serif;
+
+    --color-dark-blue: #2D2066;
+    --color-purple: #4F34C7;
+    --color-light-purple: #C2B8F0;
+    --table-purple: #EEEAFF;
+    --color-light-blue: #7EC4FE;
+    --color-dark-grey: #696969;
+    --color-grey: #8F8F8F;
+    --color-light-grey: #C8C8C8;
+    --border-grey: #E5E5E5;
+    --color-light-green: #ECFDF5;
+    --color-dark-green: #208C6B;
+    --color-light-yellow: #FFFEE0;
+    --color-dark-yellow: #BFBF23;
+    --color-pink: #EA3EF7;
+    --color-blue-male: #0021F5;
 }
