@@ -78,8 +78,8 @@
                         <select name="breed" required>
                             <option value="" selected>- Sélectionner une race -</option>
                             <option value="samoyede">Samoyède</option>
-                            <option value="staffie">Staffordshire Bull Terrier</option>
-                            <option value="ber-americain">Berger Américain</option>
+                            <option value="staffordshire-bull-terrier">Staffordshire Bull Terrier</option>
+                            <option value="berger-americain">Berger Américain</option>
                         </select>
                     </div>
                     <div>
