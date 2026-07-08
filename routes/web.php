@@ -17,3 +17,7 @@ Route::get('/nos-races', function () {
 Route::get('/le-guide-de-l-adoption', function () {
     return view('front.le-guide-de-l-adoption');
 });
+
+Route::get('/nous-contacter', function () {
+    return view('front.contact');
+});

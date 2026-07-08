@@ -5,5 +5,5 @@
             avant de vous recontacter pour échanger sur votre projet, planifier une visite ou valider votre inscription
             sur la liste d'attente de la prochaine portée.</p>
     </div>
-    <a href="/">Déposer son dossier →</a>
+    <a href="/nous-contactez">Déposer son dossier →</a>
 </div>

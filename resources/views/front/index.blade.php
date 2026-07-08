@@ -5,8 +5,8 @@
         <p>Des chiots d'exception, élevés avec passion dans un cadre naturel et familiale. Trois races d'élite
             sélectionnées pour leur caractère équilibré et leur santé irréprochable.</p>
         <div>
-            <a href="/">Découvrir nos races →</a>
-            <a href="/">Prendre contact →</a>
+            <a href="/nos-races">Découvrir nos races →</a>
+            <a href="/nous-contacter">Prendre contact →</a>
         </div>
     </section>
     <section>

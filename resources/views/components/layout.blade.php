@@ -25,7 +25,7 @@
                 <li><a href="/nos-races">Nos races</a></li>
                 <li><a href="/le-guide-de-l-adoption">Guide de l'adoption</a></li>
                 <li><a href="/">Le coin conseil</a></li>
-                <li><a href="/">Nous contacter</a></li>
+                <li><a href="/nous-contacter">Nous contacter</a></li>
             </ul>
         </nav>
     </header>
@@ -48,7 +48,7 @@
                     <li><a href="/nos-races">Nos races</a></li>
                     <li><a href="/le-guide-de-l-adoption">Guide de l'adoption</a></li>
                     <li><a href="/">Le coin conseil</a></li>
-                    <li><a href="/">Contact</a></li>
+                    <li><a href="/nous-contacter">Contact</a></li>
                 </ul>
             </section>
             
