@@ -27,7 +27,6 @@ return new class extends Migration
             $table->text('description');
             $table->text('image_path');
             $table->enum('status', ['disponible', 'reservé', 'vendu'])->default('disponible');
-            $table->foreignId('chien_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
