@@ -2,24 +2,24 @@
     <section>
         <a>← Toutes nos races</a>
         <h2>Standard FCI n°367</h2>
-        <h1>Samoyède</h1>
+        <h1>Berger Américain</h1>
         <h3>adjectif de la race</h3>
     </section>
     <section>
         <div>
-            <p>12 - 14 ans</p>
+            <p>12 - 13 ans</p>
             <small>Espérance de vie</small>
         </div>
         <div>
-            <p>48 - 60 cm</p>
+            <p>33 - 46 cm</p>
             <small>Taille adulte</small>
         </div>
         <div>
-            <p>20 - 30 kg</p>
+            <p>9 - 18 kg</p>
             <small>Poids adulte</small>
         </div>
         <div>
-            <p>N° 212</p>
+            <p>N° 367</p>
             <small>Standard FCI</small>
         </div>
     </section>
