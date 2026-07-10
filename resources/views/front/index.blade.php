@@ -26,7 +26,7 @@
                     <p>Le Staffordshire Bull Terrier est un chien affectueux, loyal et courageux. Il est connu pour sa
                         nature amicale et son attachement à sa famille.</p>
                 </div>
-                <a href="/">Voir la race →</a>
+                <a href="/nos-races/staffordshire-bull-terrier">Voir la race →</a>
             </div>
             <div>
                 <div>
@@ -38,7 +38,7 @@
                     <p>Le Samoyède est un chien affectueux, loyal et courageux. Il est connu pour sa
                         nature amicale et son attachement à sa famille.</p>
                 </div>
-                <a href="/">Voir la race →</a>
+                <a href="/nos-races/samoyede">Voir la race →</a>
             </div>
             <div>
                 <div>
@@ -50,7 +50,7 @@
                     <p>Le Berger Américain est un chien affectueux, loyal et courageux. Il est connu pour sa
                         nature amicale et son attachement à sa famille.</p>
                 </div>
-                <a href="/">Voir la race →</a>
+                <a href="/nos-races/berger-americain">Voir la race →</a>
             </div>
         </div>
     </section>

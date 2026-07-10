@@ -205,12 +205,9 @@
                 <small>Reproducteur</small>
                 <h2>Parents</h2>
             </div>
-            <a href="/">Voir plus →</a>
+            <a href="/nos-races/samoyede/nos-reproducteurs">Voir plus →</a>
         </div>
         <div>
-            <!-- @foreach ( as )
-            
-            @endforeach -->
             <!-- Peut tre faire un carrousel avec tous els repro ou juste 3 et le reste si clique -->
             <a href="/">
                 <img src="" alt="photo d'un reproducteur samoyède" />
@@ -230,9 +227,6 @@
             <a href="/">Voir plus →</a>
         </div>
         <div>
-            <!-- @foreach ( as )
-            
-            @endforeach -->
             <!-- Peut tre faire un carrousel avec tous els repro ou juste 3 et le reste si clique -->
             <a href="/">
                 <img src="" alt="photo d'un chiot samoyède" />

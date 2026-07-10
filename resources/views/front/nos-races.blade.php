@@ -25,7 +25,7 @@
                         <small>Taille adulte</small>
                         <p>48 - 60 cm</p>
                     </div>
-                    <a href="/">Découvrir la race →</a>
+                    <a href="/nos-races/samoyede">Découvrir la race →</a>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                         <small>Taille adulte</small>
                         <p>33 - 41 cm</p>
                     </div>
-                    <a href="/">Découvrir la race →</a>
+                    <a href="/nos-races/staffordshire-bull-terrier">Découvrir la race →</a>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
                         <small>Taille adulte</small>
                         <p>33 - 46 cm</p>
                     </div>
-                    <a href="/">Découvrir la race →</a>
+                    <a href="/nos-races/berger-americain">Découvrir la race →</a>
                 </div>
             </div>
         </div>
