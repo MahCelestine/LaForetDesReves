@@ -34,7 +34,7 @@ Route::get('/nos-races/staffordshire-bull-terrier', function () {
     return view('front.staffie');
 });
 
-Route::get('/nos-races/samoyede/nos-reproducteurs', function () { 
+Route::get('/nos-races/samoyede/nos-reproducteurs', function () {
     /////voir pour faire en sorte que le nom de la race change dynamiquement comme 
     // le contenue de nos reprodcuteur avec un contexte comme cca mais avec la race 
     // donc l'index doit suivre
@@ -43,4 +43,57 @@ Route::get('/nos-races/samoyede/nos-reproducteurs', function () {
 
 Route::get('/nos-races/samoyede/nos-chiots', function () {
     return view('front.nos-chiots');
+});
+
+Route::get('/le-coin-conseil/article', function () {
+    return view('front.content');
+});
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/back-chien', function () {
+        return view('back.back-chien');
+    });
+
+    Route::get('/back-chien/create', function () {
+        return view('back.back-chien-create');
+    });
+
+    Route::get('back-chien/update', function () {
+        return view('back.back-chien-update');
+    });
+
+    Route::get('/back-chiot', function () {
+        return view('back.back-chiot');
+    });
+    Route::get('/back-chiot/create', function () {
+        return view('back.back-chiot-create');
+    });
+
+    Route::get('back-chiot/update', function () {
+        return view('back.back-chiot-update');
+    });
+
+
+    Route::get('/back-litter/create', function () {
+        return view('back.back-litter-create');
+    });
+
+    Route::get('back-litter/update', function () {
+        return view('back.back-litter-update');
+    });
+
+
+    Route::get('/back-content', function () {
+        return view('back.back-content');
+    });
+
+    Route::get('/back-content/create', function () {
+        return view('back.back-content-create');
+    });
+
+    Route::get('back-content/update', function () {
+        return view('back.back-content-update');
+    });
+
 });

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('animal_id');
+            $table->morphs('animal');
             $table->text('image_path');
             $table->timestamps();
         });

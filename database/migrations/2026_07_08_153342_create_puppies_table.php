@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('puppies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mom_id')->constrained('chiens');
-            $table->foreignId('dad_id')->constrained('chiens');
+            $table->foreignId('litter_id')->constrained('litters')->onDelete('cascade');
+            $table->foreignId('mom_id')->constrained('dogs');
+            $table->foreignId('dad_id')->constrained('dogs');
             $table->string('name');
             $table->enum('sex', ['male', 'female']);
             $table->bigInteger('identification_number')->unique();

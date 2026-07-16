@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LitterController extends Controller
+class PuppyController extends Controller
 {
     public function store()
     {
@@ -13,12 +13,12 @@ class LitterController extends Controller
 
     public function create()
     {
-        return view('back.back-litter-create');
+        return view('back.back-chiot-create');
     }
 
     public function edit()
     {
-        return view('back.back-litter-update');
+        return view('back.back-chiot-update');
     }
 
     public function update()
@@ -29,6 +29,10 @@ class LitterController extends Controller
     public function destroy()
     {
         return redirect()->route('back.back-chiot');
+    }
+
+    public function show() {
+        return view('front.chiot');
     }
 
     public function indexBack()
