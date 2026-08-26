@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DogController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -51,13 +52,11 @@ Route::get('/le-coin-conseil/article', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/back-chien', function () {
-        return view('back.back-chien');
-    });
+    Route::get('/back-chien', [DogController::class, 'index'])->name('back.back-chien');
 
-    Route::get('/back-chien/create', function () {
-        return view('back.back-chien-create');
-    });
+    Route::get('/back-chien/create', [DogController::class, 'create'])->name('back.back-chien-create');
+
+    Route::post('/back-chien/store', [DogController::class, 'store'])->name('back.back-chien-store');
 
     Route::get('back-chien/update', function () {
         return view('back.back-chien-update');

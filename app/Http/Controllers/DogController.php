@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreDogRequest;
+use App\Models\Dog;
 
 class DogController extends Controller
 {
-    public function store()
+    public function store(StoreDogRequest $request)
     {
-        return view('back.back-chien');
+        $validated = $request->validated();
+
+        $validated['image_path'] = 'placeholder.jpg';
+
+        $dog = Dog::create($validated);
+
+        return redirect()->route('back.back-chien');
     }
 
     public function create()

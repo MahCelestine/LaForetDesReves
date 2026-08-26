@@ -4,7 +4,7 @@
         <h1>Chiens</h1>
         <div>
             <h2>Gérez les reproducteurs et les retraités toutes races confondus.</h2>
-            <a href="">Ajouter un chien</a>
+            <a href="/back-chien/create">Ajouter un chien</a>
         </div>
     </div>
     <div>

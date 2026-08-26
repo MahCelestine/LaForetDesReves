@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name_affix');
             $table->string('common_name');
             $table->enum('sex', ['male', 'female']);
-            $table->bigInteger('identification_number')->unique();
+            $table->string('identification_number')->unique();
             $table->boolean('LOF')->default(true);
             $table->string('cotation');
             $table->string('color');
