@@ -12,5 +12,9 @@ class Category extends Model
         'name'
     ];
 
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
     
 }

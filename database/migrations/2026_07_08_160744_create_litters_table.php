@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('dad_id')->constrained('dogs');
             $table->date('birth_date');
             $table->integer('number_puppies')->nullable();
-            $table->enum('breed', ['samoyède', 'staffordshire bull terrier','berger américain']);
+            $table->foreignId('breed_id')->constrained()->cascadeOnDelete();
             $table->enum('status', ['en cours', 'futur', 'passée'])->default('en cours');
             $table->timestamps();
         });

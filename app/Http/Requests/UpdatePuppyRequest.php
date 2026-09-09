@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDogRequest extends FormRequest
+class UpdatePuppyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,18 +22,16 @@ class StoreDogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_affix' => 'required|string|max:255',
-            'common_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'sex' => 'required|in:male,female',
-            'identification_number' => 'required|string',
-            'LOF' => 'required|boolean',
-            'cotation' => 'nullable|string|max:255',
+            'identification_number' => 'nullable|string',
             'color' => 'required|string|max:255',
-            'birth_date' => 'required|date|before_or_equal:today',
-            'breed_id' => 'required|exists:breeds,id',
-            'retirement' => 'nullable|boolean',
+            'price' => 'required|numeric',
+            'adoption_date' => 'required|date',
+            'weight' => 'required|numeric',
+            'status' => 'required|in:disponible,réservé,vendu',
             'description' => 'nullable|string',
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 }

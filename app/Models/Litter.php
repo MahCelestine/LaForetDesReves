@@ -15,7 +15,7 @@ class Litter extends Model
         'dad_id',
         'birth_date',
         'number_puppies',
-        'breed',
+        'breed_id',
         'status',
     ];
 
@@ -36,7 +36,12 @@ class Litter extends Model
     }
 
     public function puppies(): HasMany
-{
-    return $this->hasMany(Puppy::class, 'litter_id');
-}
+    {
+        return $this->hasMany(Puppy::class, 'litter_id');
+    }
+
+    public function breed(): BelongsTo
+    {
+        return $this->belongsTo(Breed::class, 'breed_id');
+    }
 }

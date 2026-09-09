@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('cotation');
             $table->string('color');
             $table->date('birth_date');
-            $table->enum('breed', ['samoyède', 'staffordshire bull terrier','berger américain']);
+            $table->foreignId('breed_id')->constrained()->cascadeOnDelete();
             $table->boolean('retirement')->default(false);
             $table->text('description');
             $table->text('image_path');

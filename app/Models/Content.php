@@ -17,6 +17,7 @@ class Content extends Model
         'category_id',
         'publication_date',
         'is_published',
+        'is_video',
     ];
 
     protected $casts = [

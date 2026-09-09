@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories');
             $table->date('publication_date');
             $table->boolean('is_published')->default(false);
+            $table->boolean('is_video')->default(false);
             $table->timestamps();
         });
     }

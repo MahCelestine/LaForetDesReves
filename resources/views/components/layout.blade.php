@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>{{ $title ?? 'Élevage de la Forêt des Rêves - Samoyèdes, Staffordshire Bull Terrier et Bergers Américains' }}</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta name="description" content="{{ $attributes->get('meta-description', 'Bienvenue à l\'élevage familial de la Forêt des Rêves, votre élevage de Samoyèdes, Staffordshire Bull Terrier et Bergers Américains.') }}">
 </head>
 

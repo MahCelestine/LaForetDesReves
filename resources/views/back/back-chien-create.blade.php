@@ -2,7 +2,7 @@
     <x-layout-back />
     <div>
         <h1>Ajouter un chien</h1>
-        <form action="{{ route('back.back-chien-store') }}" method="POST">
+        <form action="{{ route('back.back-chien-store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div>
                 <h2>Information</h2>
@@ -56,11 +56,11 @@
                 </div>
                 <div>
                     <label>Race</label>
-                    <select name="breed" required>
+                    <select name="breed_id" required>
                         <option value="">- Sélectionnez -</option>
-                        <option value="samoyède">Samoyède</option>
-                        <option value="staffordshire bull terrier">Staffordshire Bull Terrier</option>
-                        <option value="berger américain">Berger Américain</option>
+                        @foreach ( $breeds as $breed )
+                        <option value="{{ $breed->id }}">{{ $breed->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div>
@@ -69,33 +69,23 @@
                 </div>
                 <span></span>
             </div>
-            <!-- <div>
+            <div>
                 <h2>Photos</h2>
                 <div>
-                    <label>Pour le thumbail</label>
-                    <form>
-                        <input type="file" />
-                        <button>Chercher dans les fichiers</button>
-                    </form>
-                </div>
+                    <label>Pour le thumbail (1 fichier de moins de 2 Mo)</label>
+                    <div>
+                        <input type="file" name="image_path" required/>
+                    </div>
+                <!-- </div>
                     <label>Pour le carrousel (plusieurs fichiers possible)</label>
                     <div>
                         <input type="file"/>
                         <button>Chercher dans les fichiers</button>
                     </div>
                 </div>
-                <span></span>
-            </div> -->
+                <span></span> -->
+            </div>
             <button type="submit" >Créer un nouveau reproducteur</button>
         </form>
     </div>
-    @if ($errors->any())
-    <div style="color: red;">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 </div>

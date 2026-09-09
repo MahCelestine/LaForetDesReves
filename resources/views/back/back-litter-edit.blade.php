@@ -1,11 +1,11 @@
 <div>
     <x-layout-back />
     <div>
-        <h1>Ajouter une portée</h1>
-        <form action="{{ route('back.back-litter-store') }}" method="POST" x-data="{
-            breedSelect: '',
-            dadSelect: '',
-            momSelect: '',
+        <h1>Modifier la portée de {{ $litter->dad->common_name }} et {{ $litter->mom->common_name }}</h1>
+        <form action="{{ route('back.back-litter-update', $litter) }}" method="POST" x-data="{
+            breedSelect: '{{ old('breed_id', $litter->breed_id) }}',
+            dadSelect: '{{ old('dad_id', $litter->dad_id) }}',
+            momSelect: '{{ old('mom_id', $litter->mom_id) }}',
             dogs: @js($dogs),
             
             get dads() {
@@ -21,19 +21,22 @@
             }
         }">
             @csrf
+            @method('PUT')
             <div>
                 <h2>Informations</h2>
                 <div>
                     <div>
                         <label>Date de mise à bas</label>
-                        <input type="date" name="birth_date" />
+                        <input type="date" name="birth_date" value="{{ old('birth_date', $litter->birth_date?->format('Y-m-d')) }}"  />
                     </div>
                     <div>
                         <label>Race</label>
                         <select name="breed_id" x-model="breedSelect" @change="onBreedChange()" required>
                             <option value="">Sélectionner la race</option>
                             @foreach ($breeds as $breed)
-                                <option value="{{ $breed->id }}">{{ $breed->name }}</option>
+                                <option value="{{ $breed->id }}">
+                                    {{ $breed->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -65,10 +68,27 @@
                         </select>
                     </div>
                 </div>
-                <input type="hidden" name="number_puppies" value="0" />
+                <div>
+                    <label>Statut</label>
+                    <select name="status" required>
+                        <option value="">- Sélectionnez -</option>
+                        <option value="en cours" {{ $litter->status == 'en cours' ? 'selected' : '' }}>En cours</option>
+                        <option value="futur" {{ $litter->status == 'futur' ? 'selected' : '' }}>Futur</option>
+                        <option value="passée" {{ $litter->status == 'passée' ? 'selected' : '' }}>Passée</option>
+                </div>
+                <input type="hidden" name="number_puppies" value="{{ $litter->number_puppies }}" />
                 <span></span>
-                <button type="submit">Créer une nouvelle porté</button>
+                <button type="submit">Mettre à jour la portée</button>
         </form>
     </div>
+    @if ($errors->any())
+        <div style="color: red;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </div>

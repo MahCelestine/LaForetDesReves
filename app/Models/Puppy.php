@@ -22,7 +22,7 @@ class Puppy extends Model
         'color',
         'birth_date',
         'adoption_date',
-        'breed',
+        'breed_id',
         'description',
         'image_path',
         'status',
@@ -33,7 +33,6 @@ class Puppy extends Model
         'adoption_date' => 'date',
         'price' => 'integer',
         'weight' => 'integer',
-        'identification_number' => 'integer',
     ];
 
     public function litter(): BelongsTo
@@ -44,5 +43,10 @@ class Puppy extends Model
     public function pictures(): MorphMany
     {
         return $this->morphMany(Picture::class, 'animal');
+    }
+
+    public function breed(): BelongsTo
+    {
+        return $this->belongsTo(Breed::class);
     }
 }

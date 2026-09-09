@@ -18,7 +18,7 @@ class Dog extends Model
         'cotation',
         'color',
         'birth_date',
-        'breed',
+        'breed_id',
         'retirement',
         'description',
         'image_path',
@@ -31,7 +31,12 @@ class Dog extends Model
     ];
 
     public function pictures(): MorphMany
-{
-    return $this->morphMany(Picture::class, 'animal');
-}
+    {
+        return $this->morphMany(Picture::class, 'animal');
+    }
+
+    public function breed()
+    {
+        return $this->belongsTo(Breed::class);
+    }
 }

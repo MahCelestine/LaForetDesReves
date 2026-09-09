@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\PuppyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DogController;
+use App\Http\Controllers\LitterController;
+use App\Http\Controllers\ContentController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -52,47 +55,34 @@ Route::get('/le-coin-conseil/article', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/back-chien', [DogController::class, 'index'])->name('back.back-chien');
+    Route::get('/back-chien', [DogController::class, 'indexBack'])->name('back.back-chien');
 
     Route::get('/back-chien/create', [DogController::class, 'create'])->name('back.back-chien-create');
-
     Route::post('/back-chien/store', [DogController::class, 'store'])->name('back.back-chien-store');
+    Route::get('back-chien/{dog}/edit', [DogController::class, 'edit'])->name('back.back-chien-edit');
+    Route::post('back-chien/{dog}', [DogController::class, 'update'])->name('back.back-chien-update');
+    Route::delete('back-chien/{dog}', [DogController::class, 'destroy'])->name('back.back-chien-destroy');
 
-    Route::get('back-chien/update', function () {
-        return view('back.back-chien-update');
-    });
+    Route::get('/back-chiot', [PuppyController::class, 'indexBack'])->name('back.back-chiot');
 
-    Route::get('/back-chiot', function () {
-        return view('back.back-chiot');
-    });
-    Route::get('/back-chiot/create', function () {
-        return view('back.back-chiot-create');
-    });
+    Route::get('/back-chiot/create/{litter_id?}', [PuppyController::class, 'create'])->name('back.back-chiot-create');
+    Route::post('/back-chiot/store', [PuppyController::class, 'store'])->name('back.back-chiot-store');
+    Route::get('back-chiot/{puppy}/edit', [PuppyController::class, 'edit'])->name('back.back-chiot-edit');
+    Route::put('back-chiot/{puppy}', [PuppyController::class, 'update'])->name('back.back-chiot-update');
+    Route::delete('back-chiot/{puppy}', [PuppyController::class, 'destroy'])->name('back.back-chiot-destroy');
 
-    Route::get('back-chiot/update', function () {
-        return view('back.back-chiot-update');
-    });
+    Route::get('/back-litter/create', [LitterController::class, 'create'])->name('back.back-litter-create');
+    Route::post('/back-litter/store', [LitterController::class, 'store'])->name('back.back-litter-store');
+    Route::get('back-litter/{litter}/edit', [LitterController::class, 'edit'])->name('back.back-litter-edit');
+    Route::put('back-litter/{litter}', [LitterController::class, 'update'])->name('back.back-litter-update');
+    Route::delete('back-litter/{litter}', [LitterController::class, 'destroy'])->name('back.back-litter-destroy');
 
+    Route::get('/back-content', [ContentController::class, 'indexBack'])->name('back.back-content');
 
-    Route::get('/back-litter/create', function () {
-        return view('back.back-litter-create');
-    });
-
-    Route::get('back-litter/update', function () {
-        return view('back.back-litter-update');
-    });
-
-
-    Route::get('/back-content', function () {
-        return view('back.back-content');
-    });
-
-    Route::get('/back-content/create', function () {
-        return view('back.back-content-create');
-    });
-
-    Route::get('back-content/update', function () {
-        return view('back.back-content-update');
-    });
+    Route::get('/back-content/create', [ContentController::class, 'create'])->name('back.back-content-create');
+    Route::post('/back-content/store', [ContentController::class, 'store'])->name('back.back-content-store');
+    Route::get('back-content/{content}/edit', [ContentController::class, 'edit'])->name('back.back-content-edit');
+    Route::put('back-content/{content}', [ContentController::class, 'update'])->name('back.back-content-update');
+    Route::delete('back-content/{content}', [ContentController::class, 'destroy'])->name('back.back-content-destroy');
 
 });

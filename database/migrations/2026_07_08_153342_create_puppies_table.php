@@ -18,13 +18,13 @@ return new class extends Migration
             $table->foreignId('dad_id')->constrained('dogs');
             $table->string('name');
             $table->enum('sex', ['male', 'female']);
-            $table->bigInteger('identification_number')->unique();
+            $table->string('identification_number')->unique()->nullable();
             $table->integer('weight');
             $table->integer('price');
             $table->string('color');
             $table->date('birth_date');
             $table->date('adoption_date');
-            $table->enum('breed', ['samoyède', 'staffordshire bull terrier','berger américain']);
+            $table->foreignId('breed_id')->constrained('breeds')->cascadeOnDelete();
             $table->text('description');
             $table->text('image_path');
             $table->enum('status', ['disponible', 'reservé', 'vendu'])->default('disponible');

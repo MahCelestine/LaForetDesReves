@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDogRequest extends FormRequest
+class UpdateDogRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,9 +31,9 @@ class StoreDogRequest extends FormRequest
             'color' => 'required|string|max:255',
             'birth_date' => 'required|date|before_or_equal:today',
             'breed_id' => 'required|exists:breeds,id',
-            'retirement' => 'nullable|boolean',
+            'retirement' => 'required|boolean',
             'description' => 'nullable|string',
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 }
