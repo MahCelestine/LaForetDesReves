@@ -2,8 +2,8 @@
     <x-layout-back />
     <div>
         <h1>Modifier {{ $dog->common_name }}</h1>
-        <form action="{{ route('back.back-chien-update', ['dog' => $dog->id]) }}" method="POST"
-            enctype="multipart/form-data">
+        
+        <form action="{{ route('back.back-chien-update', ['dog' => $dog->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div>
@@ -39,8 +39,7 @@
                 <div>
                     <div>
                         <label>Date de naissance</label>
-                        <input type="date" name="birth_date"
-                            value="{{ old('birth_date', $dog->birth_date?->format('Y-m-d')) }}" required />
+                        <input type="date" name="birth_date" value="{{ old('birth_date', $dog->birth_date?->format('Y-m-d')) }}" required />
                     </div>
                     <div>
                         <label>Couleur</label>
@@ -50,8 +49,7 @@
                 <div>
                     <div>
                         <label>Numéro d'identification</label>
-                        <input type="text" name="identification_number" value="{{ $dog->identification_number }}"
-                            required />
+                        <input type="text" name="identification_number" value="{{ $dog->identification_number }}" required />
                     </div>
                     <div>
                         <label>Cotation</label>
@@ -65,7 +63,8 @@
                             <option value="">- Sélectionnez -</option>
                             @foreach ($breeds as $breed)
                                 <option value="{{ $breed->id }}" {{ $dog->breed_id == $breed->id ? 'selected' : '' }}>
-                                    {{ $breed->name }}</option>
+                                    {{ $breed->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -80,33 +79,36 @@
                 </div>
                 <div>
                     <label>Description de l'animal</label>
-                    <textarea
-                        placeholder="Parler de  l’animal, de son comportement t out ce qui pourrait être intéressant de savoir"
-                        name="description">{{ $dog->description }}</textarea>
+                    <textarea name="description">{{ $dog->description }}</textarea>
                 </div>
-                <span></span>
             </div>
-            <div>
-                <h2>Photos</h2>
+            <div x-data="{ deletedPictures: [] }">
+                <label>Galerie de photos actuelles</label>
+
                 <div>
-                    <label>Pour le thumbail (1 fichier de moins de 2 Mo)</label>
+                    @foreach ($dog->pictures as $picture)
+                        <div x-show="!deletedPictures.includes({{ $picture->id }})">
+                            <img src="{{ asset('storage/' . $picture->image_path) }}" alt="Photo">
+                            <button type="button" @click="deletedPictures.push({{ $picture->id }})">
+                                Supprimer
+                            </button>
+                        </div>
+                    @endforeach
+                </div>
+
+                <template x-for="id in deletedPictures" :key="id">
+                    <input type="hidden" name="delete_pictures[]" :value="id">
+                </template>
+
+                <div>
+                    <label>Ajouter des photos à la galerie</label>
                     <div>
-                        <img src="{{ asset('storage/' . $dog->image_path) }}" alt="Mon image">
-                        <small>Image actuelle</small>
-                    </div>
-                    <div>
-                        <input type="file" name="image_path" />
-                    </div>
-                    <!-- </div>
-                    <label>Pour le carrousel (plusieurs fichiers possible)</label>
-                    <div>
-                        <input type="file"/>
-                        <button>Chercher dans les fichiers</button>
+                        <input type="file" name="pictures[]" multiple accept="image/*" />
                     </div>
                 </div>
-                <span></span> -->
-                </div>
-                <button type="submit">Modifier la fiche de {{ $dog->common_name }}</button>
+            </div>
+            <span></span>
+            <button type="submit">Modifier la fiche de {{ $dog->common_name }}</button>
         </form>
     </div>
 </div>

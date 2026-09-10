@@ -1,5 +1,21 @@
+<x-layout-back />
 <div>
-    <x-layout-back />
+    @if ($content->is_video == 0)
+        <script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                tinymce.init({
+                    selector: '#content-editor',
+                    height: 400,
+                    menubar: false,
+                    plugins: 'lists link code table wordcount',
+                    toolbar: 'undo redo | blocks | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | link table | removeformat',
+                    promotion: false,
+                    branding: false
+                });
+            });
+        </script>
+    @endif
     <div>
         <h1>Modifier un article</h1>
         <form action="{{ route('back.back-content-update', $content) }}" method="POST" enctype="multipart/form-data">
@@ -47,11 +63,13 @@
             </div>
             @if ($content->is_video == 0)
                 <div>
-                    <label>Contenue de l'article (laisser vide si vidéo)</label>
-                    <textarea name="content" placeholder="Contenue de l'article">{{ $content->content }}</textarea>
+                    <label>Contenu de l'article</label>
+                    <textarea id="content-editor" name="content">{{ old('content', $content->content) }}</textarea>
                 </div>
             @else
-                    <textarea name="content" placeholder="Contenue de l'article" disabled>{{ $content->content }}</textarea>
+                <div>
+                    <textarea name="content" disabled>{{ $content->content }}</textarea>
+                </div>
             @endif
 
             <span></span>

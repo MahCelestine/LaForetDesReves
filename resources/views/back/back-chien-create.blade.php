@@ -1,5 +1,5 @@
+<x-layout-back />
 <div>
-    <x-layout-back />
     <div>
         <h1>Ajouter un chien</h1>
         <form action="{{ route('back.back-chien-store') }}" method="POST" enctype="multipart/form-data">
@@ -47,7 +47,7 @@
                 <div>
                     <div>
                         <label>Numéro d'identification</label>
-                        <input type="text" name="identification_number" required/>
+                        <input type="text" name="identification_number" required />
                     </div>
                     <div>
                         <label>Cotation</label>
@@ -58,14 +58,16 @@
                     <label>Race</label>
                     <select name="breed_id" required>
                         <option value="">- Sélectionnez -</option>
-                        @foreach ( $breeds as $breed )
-                        <option value="{{ $breed->id }}">{{ $breed->name }}</option>
+                        @foreach ($breeds as $breed)
+                            <option value="{{ $breed->id }}">{{ $breed->name }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div>
                     <label>Description de l'animal</label>
-                    <textarea placeholder="Parler de  l’animal, de son comportement t out ce qui pourrait être intéressant de savoir" name="description" ></textarea>
+                    <textarea
+                        placeholder="Parler de  l’animal, de son comportement t out ce qui pourrait être intéressant de savoir"
+                        name="description"></textarea>
                 </div>
                 <span></span>
             </div>
@@ -74,18 +76,14 @@
                 <div>
                     <label>Pour le thumbail (1 fichier de moins de 2 Mo)</label>
                     <div>
-                        <input type="file" name="image_path" required/>
+                        <input type="file" name="image_path" required />
                     </div>
-                <!-- </div>
-                    <label>Pour le carrousel (plusieurs fichiers possible)</label>
                     <div>
-                        <input type="file"/>
-                        <button>Chercher dans les fichiers</button>
+                        <label>Photos de l'animal</label>
+                        <input type="file" name="pictures[]" multiple accept="image/*" />
                     </div>
                 </div>
-                <span></span> -->
-            </div>
-            <button type="submit" >Créer un nouveau reproducteur</button>
+                <button type="submit">Créer un nouveau reproducteur</button>
         </form>
     </div>
 </div>

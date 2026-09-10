@@ -1,5 +1,21 @@
-<div>
     <x-layout-back />
+<div>
+    @if ($content->is_video == 0)
+        <script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                tinymce.init({
+                    selector: '#content-editor',
+                    height: 400,
+                    menubar: false,
+                    plugins: 'lists link code table wordcount',
+                    toolbar: 'undo redo | blocks | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | link table | removeformat',
+                    promotion: false,
+                    branding: false
+                });
+            });
+        </script>
+    @endif
     <div>
         <h1>Modifier la portée de {{ $litter->dad->common_name }} et {{ $litter->mom->common_name }}</h1>
         <form action="{{ route('back.back-litter-update', $litter) }}" method="POST" x-data="{

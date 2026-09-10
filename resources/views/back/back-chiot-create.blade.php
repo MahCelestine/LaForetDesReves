@@ -70,15 +70,12 @@
                 <h2>Photos</h2>
                 <div>
                     <label>Pour le thumbail</label>
-                        <input type="file" name="image_path" required />
+                    <input type="file" name="image_path" required />
                 </div>
-                <!-- <div>
-                    <label>Pour le carrousel (plusieurs fichiers possible)</label>
-                    <form>
-                        <input type="file" />
-                        <button>Chercher dans les fichiers</button>
-                    </form>
-                </div> -->
+                <div>
+                    <label>Photos pour le carrousel de l'animal</label>
+                    <input type="file" name="pictures[]" multiple accept="image/*" />
+                </div>
                 <span></span>
             </div>
             <button type="submit">Créer un chiot dans la portée</button>

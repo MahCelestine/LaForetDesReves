@@ -28,10 +28,14 @@ class UpdatePuppyRequest extends FormRequest
             'color' => 'required|string|max:255',
             'price' => 'required|numeric',
             'adoption_date' => 'required|date',
-            'weight' => 'required|numeric',
+            'weight' => 'nullable|numeric',
             'status' => 'required|in:disponible,réservé,vendu',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'delete_pictures' => 'nullable|array',
+            'delete_pictures.*' => 'exists:pictures,id',
+            'pictures' => 'nullable|array',
+            'pictures.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ];
     }
 }

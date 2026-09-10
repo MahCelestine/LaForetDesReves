@@ -33,7 +33,9 @@ class StoreDogRequest extends FormRequest
             'breed_id' => 'required|exists:breeds,id',
             'retirement' => 'nullable|boolean',
             'description' => 'nullable|string',
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'pictures' => 'nullable|array',
+            'pictures.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ];
     }
 }

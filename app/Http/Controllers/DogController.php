@@ -19,7 +19,16 @@ class DogController extends Controller
             $validated['image_path'] = $request->file('image_path')->store('dogs', 'public');
         }
 
-        Dog::create($validated);
+        $dog = Dog::create($validated);
+
+        if ($request->hasFile('pictures')) {
+            foreach ($request->file('pictures') as $file) {
+                $path = $file->store('dogs', 'public');
+                $dog->pictures()->create([
+                    'image_path' => $path,
+                ]);
+            }
+        }
 
         return redirect()->route('back.back-chien');
     }
@@ -49,6 +58,27 @@ class DogController extends Controller
 
         $dog->update($validated);
 
+        if ($request->filled('delete_pictures')) {
+            $picturesToDelete = $dog->pictures()->whereIn('id', $request->input('delete_pictures'))->get();
+
+            foreach ($picturesToDelete as $picture) {
+                if (Storage::disk('public')->exists($picture->image_path)) {
+                    Storage::disk('public')->delete($picture->image_path);
+                }
+                $picture->delete();
+            }
+        }
+
+        if ($request->hasFile('pictures')) {
+            foreach ($request->file('pictures') as $file) {
+                $path = $file->store('dogs', 'public');
+
+                $dog->pictures()->create([
+                    'image_path' => $path,
+                ]);
+            }
+        }
+
         return redirect()->route('back.back-chien');
     }
 
@@ -57,6 +87,13 @@ class DogController extends Controller
         if ($dog->image_path && Storage::disk('public')->exists($dog->image_path)) {
             Storage::disk('public')->delete($dog->image_path);
         }
+
+        foreach ($dog->pictures as $picture) {
+            if (Storage::disk('public')->exists($picture->image_path)) {
+                Storage::disk('public')->delete($picture->image_path);
+            }
+        }
+        $dog->pictures()->delete();
         $dog->delete();
 
         return redirect()->route('back.back-chien');

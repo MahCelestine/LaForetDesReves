@@ -60,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/back-chien/create', [DogController::class, 'create'])->name('back.back-chien-create');
     Route::post('/back-chien/store', [DogController::class, 'store'])->name('back.back-chien-store');
     Route::get('back-chien/{dog}/edit', [DogController::class, 'edit'])->name('back.back-chien-edit');
-    Route::post('back-chien/{dog}', [DogController::class, 'update'])->name('back.back-chien-update');
+    Route::put('back-chien/{dog}', [DogController::class, 'update'])->name('back.back-chien-update');
     Route::delete('back-chien/{dog}', [DogController::class, 'destroy'])->name('back.back-chien-destroy');
 
     Route::get('/back-chiot', [PuppyController::class, 'indexBack'])->name('back.back-chiot');

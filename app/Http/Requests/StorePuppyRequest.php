@@ -28,11 +28,13 @@ class StorePuppyRequest extends FormRequest
             'color' => 'required|string|max:255',
             'price' => 'required|numeric',
             'adoption_date' => 'required|date',
-            'weight' => 'required|numeric',
+            'weight' => 'nullable|numeric',
             'litter_id' => 'required|exists:litters,id',
             'status' => 'required|in:disponible,réservé,vendu',
             'description' => 'nullable|string',
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'pictures' => 'nullable|array',
+            'pictures.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ];
     }
 }

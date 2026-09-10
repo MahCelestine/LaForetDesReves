@@ -33,7 +33,11 @@ class UpdateDogRequest extends FormRequest
             'breed_id' => 'required|exists:breeds,id',
             'retirement' => 'required|boolean',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'delete_pictures' => 'nullable|array',
+            'delete_pictures.*' => 'exists:pictures,id',
+            'pictures' => 'nullable|array',
+            'pictures.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ];
     }
 }

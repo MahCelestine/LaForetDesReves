@@ -13,6 +13,23 @@ class ContentController extends Controller
     public function store(StoreContentRequest $request)
     {
         $validated = $request->validated();
+
+        if ($request->filled('new_category')) {
+            $normalizedName = trim($request->input('new_category'));
+
+            $category = Category::whereRaw('LOWER(name) = ?', [mb_strtolower($normalizedName)])
+                ->first();
+
+            if (!$category) {
+                $category = Category::create([
+                    'name' => ucfirst($normalizedName)
+                ]);
+            }
+
+            $validated['category_id'] = $category->id;
+        }
+        unset($validated['new_category']);
+
         if ($request->hasFile('image_path')) {
             $validated['image_path'] = $request->file('image_path')->store('contents', 'public');
         }

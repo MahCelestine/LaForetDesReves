@@ -27,10 +27,23 @@ class PuppyController extends Controller
         $validated['breed_id'] = $litter->breed_id;
         $validated['birth_date'] = $litter->birth_date;
 
-        DB::transaction(function () use ($validated, $litter) {
-            Puppy::create($validated);
+        $validated['weight'] = $request->input('weight', 0) ?? 0;
+
+        DB::transaction(function () use ($validated, $litter, $request) {
+            $puppy = Puppy::create($validated);
             $litter->increment('number_puppies', 1);
+
+            if ($request->hasFile('pictures')) {
+                foreach ($request->file('pictures') as $file) {
+                    $path = $file->store('puppies', 'public');
+                    $puppy->pictures()->create([
+                        'image_path' => $path,
+                    ]);
+                }
+            }
         });
+
+
 
         return redirect()->route('back.back-chiot');
     }
@@ -45,7 +58,6 @@ class PuppyController extends Controller
     }
     public function edit(Puppy $puppy)
     {
-
         return view('back.back-chiot-edit', compact('puppy'));
     }
 
@@ -59,6 +71,27 @@ class PuppyController extends Controller
             $validated['image_path'] = $request->file('image_path')->store('puppies', 'public');
         }
         $puppy->update($validated);
+
+        if ($request->filled('delete_pictures')) {
+            $picturesToDelete = $puppy->pictures()->whereIn('id', $request->input('delete_pictures'))->get();
+
+            foreach ($picturesToDelete as $picture) {
+                if (Storage::disk('public')->exists($picture->image_path)) {
+                    Storage::disk('public')->delete($picture->image_path);
+                }
+                $picture->delete();
+            }
+        }
+
+        if ($request->hasFile('pictures')) {
+            foreach ($request->file('pictures') as $file) {
+                $path = $file->store('puppies', 'public');
+
+                $puppy->pictures()->create([
+                    'image_path' => $path,
+                ]);
+            }
+        }
         return redirect()->route('back.back-chiot');
     }
 
@@ -67,6 +100,13 @@ class PuppyController extends Controller
         if ($puppy->image_path && Storage::disk('public')->exists($puppy->image_path)) {
             Storage::disk('public')->delete($puppy->image_path);
         }
+        foreach ($puppy->pictures as $picture) {
+            if (Storage::disk('public')->exists($picture->image_path)) {
+                Storage::disk('public')->delete($picture->image_path);
+            }
+        }
+
+        $puppy->pictures()->delete();
         $puppy->delete();
         return redirect()->route('back.back-chiot');
     }

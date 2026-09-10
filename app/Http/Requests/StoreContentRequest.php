@@ -26,10 +26,11 @@ class StoreContentRequest extends FormRequest
             'extract' => 'required|string|max:255',
             'content' => 'nullable|string',
             'tiktok_path' => 'nullable|string|max:255',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'nullable|required_without:new_category|exists:categories,id',
+            'new_category' => 'nullable|required_without:category_id|string|max:255|unique:categories,name',
             'publication_date' => 'required|date',
             'is_published' => 'required|boolean',
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }
