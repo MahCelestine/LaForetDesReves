@@ -2,8 +2,9 @@
     <x-layout-back />
     <div>
         <h1>Modifier {{ $dog->common_name }}</h1>
-        
-        <form action="{{ route('back.back-chien-update', ['dog' => $dog->id]) }}" method="POST" enctype="multipart/form-data">
+
+        <form action="{{ route('back.back-chien-update', ['dog' => $dog->id]) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div>
@@ -39,7 +40,8 @@
                 <div>
                     <div>
                         <label>Date de naissance</label>
-                        <input type="date" name="birth_date" value="{{ old('birth_date', $dog->birth_date?->format('Y-m-d')) }}" required />
+                        <input type="date" name="birth_date"
+                            value="{{ old('birth_date', $dog->birth_date?->format('Y-m-d')) }}" required />
                     </div>
                     <div>
                         <label>Couleur</label>
@@ -49,7 +51,8 @@
                 <div>
                     <div>
                         <label>Numéro d'identification</label>
-                        <input type="text" name="identification_number" value="{{ $dog->identification_number }}" required />
+                        <input type="text" name="identification_number" value="{{ $dog->identification_number }}"
+                            required />
                     </div>
                     <div>
                         <label>Cotation</label>
@@ -76,6 +79,14 @@
                             <option value="1" {{ $dog->retirement == 1 ? 'selected' : '' }}>Retraité</option>
                         </select>
                     </div>
+                </div>
+                <div>
+                    <label>Externe</label>
+                    <select name="is_external" required>
+                        <option value="">- Sélectionnez -</option>
+                        <option value="1" {{ $dog->is_external ? 'selected' : '' }}>Oui</option>
+                        <option value="0" {{ !$dog->is_external ? 'selected' : '' }}>Non</option>
+                    </select>
                 </div>
                 <div>
                     <label>Description de l'animal</label>
@@ -111,4 +122,24 @@
             <button type="submit">Modifier la fiche de {{ $dog->common_name }}</button>
         </form>
     </div>
+    <livewire:loading-overlay />
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function () {
+            const overlay = document.getElementById('loading-overlay');
+            const submitBtn = this.querySelector('button[type="submit"]');
+
+            if (overlay) {
+                overlay.style.display = 'flex';
+            }
+
+            if (submitBtn) {
+                setTimeout(() => {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Enregistrement...';
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                }, 10);
+            }
+        });
+    </script>
 </div>

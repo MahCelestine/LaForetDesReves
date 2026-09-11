@@ -9,10 +9,10 @@
             dogs: @js($dogs),
             
             get dads() {
-                return this.dogs.filter(dog => dog.sex === 'male' && dog.breed_id == this.breedSelect);
+                return this.dogs.filter(dog => dog.sex === 'male' && dog.breed_id == this.breedSelect && !dog.is_external);
             },
             get moms() {
-                return this.dogs.filter(dog => dog.sex === 'female' && dog.breed_id == this.breedSelect);
+                return this.dogs.filter(dog => dog.sex === 'female' && dog.breed_id == this.breedSelect && !dog.is_external);
             },
             
             onBreedChange() {
@@ -49,7 +49,7 @@
                                 x-text="!breedSelect ? '- Sélectionnez d\'abord une race -' : '- Sélectionner le père -'">
                             </option>
                             <template x-for="dad in dads" :key="dad.id">
-                                <option :value="dad.id" x-text="dad.common_name"></option>
+                                <option :value="dad.id" x-text="dad.common_name + (dad.is_external ? ' (Externe)' : '')"></option>
                             </template>
                         </select>
                     </div>
@@ -60,7 +60,7 @@
                                 x-text="!breedSelect ? '- Sélectionnez d\'abord une race -' : '- Sélectionner la mère -'">
                             </option>
                             <template x-for="mom in moms" :key="mom.id">
-                                <option :value="mom.id" x-text="mom.common_name"></option>
+                                <option :value="mom.id" x-text="mom.common_name + (mom.is_external ? ' (Externe)' : '')"></option>
                             </template>
                         </select>
                     </div>
@@ -70,4 +70,24 @@
                 <button type="submit">Créer une nouvelle porté</button>
         </form>
     </div>
+    <livewire:loading-overlay />
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function () {
+            const overlay = document.getElementById('loading-overlay');
+            const submitBtn = this.querySelector('button[type="submit"]');
+
+            if (overlay) {
+                overlay.style.display = 'flex';
+            }
+
+            if (submitBtn) {
+                setTimeout(() => {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Enregistrement...';
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                }, 10);
+            }
+        });
+    </script>
 </div>

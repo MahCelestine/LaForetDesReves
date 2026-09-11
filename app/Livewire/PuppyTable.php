@@ -11,8 +11,9 @@ class PuppyTable extends Component
     public $selectedStatus = null;
 
     #[On('filter-changed')]
-    public function updateFilter($value) {
-    
+    public function updateFilter($value)
+    {
+
         $this->selectedStatus = $value;
     }
 
@@ -22,6 +23,8 @@ class PuppyTable extends Component
             ->when($this->selectedStatus, function ($query) {
                 $query->where('status', $this->selectedStatus);
             })
+            ->orderByRaw("CASE WHEN status = 'en cours' THEN 1 ELSE 2 END ASC")
+            ->orderByRaw("ABS(DATEDIFF(birth_date, CURDATE())) ASC")
             ->get();
 
         return view('livewire.puppy-table', compact('litters'));

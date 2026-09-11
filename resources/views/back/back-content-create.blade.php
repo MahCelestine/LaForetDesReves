@@ -84,4 +84,24 @@
             <button type="submit">Créer un nouvel article</button>
         </form>
     </div>
+    <livewire:loading-overlay />
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function () {
+            const overlay = document.getElementById('loading-overlay');
+            const submitBtn = this.querySelector('button[type="submit"]');
+
+            if (overlay) {
+                overlay.style.display = 'flex';
+            }
+
+            if (submitBtn) {
+                setTimeout(() => {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Enregistrement...';
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                }, 10);
+            }
+        });
+    </script>
 </div>

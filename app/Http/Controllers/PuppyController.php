@@ -72,6 +72,15 @@ class PuppyController extends Controller
         }
         $puppy->update($validated);
 
+        $litter = $puppy->litter;
+        if ($litter) {
+            $hasUnsoldPuppies = $litter->puppies()->where('status', '!=', 'vendu')->exists();
+
+            if (!$hasUnsoldPuppies) {
+                $litter->update(['status' => 'passée']);
+            }
+        }
+
         if ($request->filled('delete_pictures')) {
             $picturesToDelete = $puppy->pictures()->whereIn('id', $request->input('delete_pictures'))->get();
 
@@ -118,10 +127,7 @@ class PuppyController extends Controller
 
     public function indexBack(Request $request)
     {
-        $litters = Litter::with('puppies')->get();
-        $puppies = Puppy::with('litter', 'breed')->get();
-
-        return view('back.back-chiot', compact('litters', 'puppies'));
+        return view('back.back-chiot');
     }
 
     public function index()

@@ -1,21 +1,5 @@
-    <x-layout-back />
 <div>
-    @if ($content->is_video == 0)
-        <script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js" referrerpolicy="origin"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                tinymce.init({
-                    selector: '#content-editor',
-                    height: 400,
-                    menubar: false,
-                    plugins: 'lists link code table wordcount',
-                    toolbar: 'undo redo | blocks | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | link table | removeformat',
-                    promotion: false,
-                    branding: false
-                });
-            });
-        </script>
-    @endif
+    <x-layout-back />
     <div>
         <h1>Modifier la portée de {{ $litter->dad->common_name }} et {{ $litter->mom->common_name }}</h1>
         <form action="{{ route('back.back-litter-update', $litter) }}" method="POST" x-data="{
@@ -43,7 +27,8 @@
                 <div>
                     <div>
                         <label>Date de mise à bas</label>
-                        <input type="date" name="birth_date" value="{{ old('birth_date', $litter->birth_date?->format('Y-m-d')) }}"  />
+                        <input type="date" name="birth_date"
+                            value="{{ old('birth_date', $litter->birth_date?->format('Y-m-d')) }}" />
                     </div>
                     <div>
                         <label>Race</label>
@@ -97,14 +82,24 @@
                 <button type="submit">Mettre à jour la portée</button>
         </form>
     </div>
-    @if ($errors->any())
-        <div style="color: red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <livewire:loading-overlay />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function () {
+            const overlay = document.getElementById('loading-overlay');
+            const submitBtn = this.querySelector('button[type="submit"]');
+
+            if (overlay) {
+                overlay.style.display = 'flex';
+            }
+
+            if (submitBtn) {
+                setTimeout(() => {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Enregistrement...';
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                }, 10);
+            }
+        });
+    </script>
 </div>

@@ -9,7 +9,7 @@
     </div>
     <livewire:filter-bar :options="[
         ['id' => 'en cours', 'label' => 'En cours'],
-        ['id' => 'passé', 'label' => 'Passés'],
+        ['id' => 'passée', 'label' => 'Passés'],
         ['id' => 'futur', 'label' => 'Futur']
     ]" />
 

@@ -38,6 +38,7 @@ class UpdateDogRequest extends FormRequest
             'delete_pictures.*' => 'exists:pictures,id',
             'pictures' => 'nullable|array',
             'pictures.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            'is_external' => 'nullable|boolean',
         ];
     }
 }

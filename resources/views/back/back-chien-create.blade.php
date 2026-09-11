@@ -55,13 +55,23 @@
                     </div>
                 </div>
                 <div>
-                    <label>Race</label>
-                    <select name="breed_id" required>
-                        <option value="">- Sélectionnez -</option>
-                        @foreach ($breeds as $breed)
-                            <option value="{{ $breed->id }}">{{ $breed->name }}</option>
-                        @endforeach
-                    </select>
+                    <div>
+                        <label>Race</label>
+                        <select name="breed_id" required>
+                            <option value="">- Sélectionnez -</option>
+                            @foreach ($breeds as $breed)
+                                <option value="{{ $breed->id }}">{{ $breed->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label>Externe</label>
+                        <select name="is_external" required>
+                            <option value="">- Sélectionnez -</option>
+                            <option value="1">Oui</option>
+                            <option value="0">Non</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <label>Description de l'animal</label>
@@ -86,4 +96,24 @@
                 <button type="submit">Créer un nouveau reproducteur</button>
         </form>
     </div>
+    <livewire:loading-overlay />
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function () {
+            const overlay = document.getElementById('loading-overlay');
+            const submitBtn = this.querySelector('button[type="submit"]');
+
+            if (overlay) {
+                overlay.style.display = 'flex';
+            }
+
+            if (submitBtn) {
+                setTimeout(() => {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Enregistrement...';
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                }, 10);
+            }
+        });
+    </script>
 </div>

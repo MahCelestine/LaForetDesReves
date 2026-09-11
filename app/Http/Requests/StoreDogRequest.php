@@ -36,6 +36,7 @@ class StoreDogRequest extends FormRequest
             'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'pictures' => 'nullable|array',
             'pictures.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            'is_external' => 'nullable|boolean',
         ];
     }
 }

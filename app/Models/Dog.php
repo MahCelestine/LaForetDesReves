@@ -22,11 +22,13 @@ class Dog extends Model
         'retirement',
         'description',
         'image_path',
+        'is_external',
     ];
 
     protected $casts = [
         'LOF' => 'boolean',
         'retirement' => 'boolean',
+        'is_external' => 'boolean',
         'birth_date' => 'date',
     ];
 
