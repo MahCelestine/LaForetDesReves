@@ -40,106 +40,214 @@
                 <small>Uniquement sur rendez-vous</small>
             </div>
         </div>
-        <form>
+
+        <form action="{{ route('front.contact.submit') }}" method="POST" x-data="{
+    breedSelect: '{{ old('breed_id') }}',
+    puppySelect: '{{ old('puppy_id') }}',
+    puppies: @js($puppies),
+
+    get filteredPuppies() {
+        if (!this.breedSelect) return [];
+        return this.puppies.filter(puppy => String(puppy.breed_id) === String(this.breedSelect));
+    },
+
+    onBreedChange() {
+        this.puppySelect = '';
+    }
+}">
             @csrf
+
+            {{-- Affichage d'une alerte globale en cas d'erreur ou succès --}}
+            @if (session('success'))
+                <div
+                    style="background-color: #d4edda; color: #155724; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div
+                    style="background-color: #f8d7da; color: #721c24; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
+                    Certains champs contiennent des erreurs.
+                </div>
+            @endif
+
             <div>
                 <h3>Information</h3>
                 <div>
                     <div>
-                        <label>Nom *</label>
-                        <input type="text" name="name" placeholder="Votre nom" required />
+                        <div>
+                            <label>Nom *</label>
+                            <input type="text" name="name" value="{{ old('name') }}" placeholder="Votre nom" required />
+                            @error('name')
+                                <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div>
+                            <label>Prénom *</label>
+                            <input type="text" name="surname" value="{{ old('surname') }}" placeholder="Votre prénom"
+                                required />
+                            @error('surname')
+                                <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                            @enderror
+                        </div>
                     </div>
+
                     <div>
-                        <label>Prenom *</label>
-                        <input type="text" name="surname" placeholder="Votre prénom" required />
+                        <div>
+                            <label>Adresse e-mail *</label>
+                            <input type="email" name="email" value="{{ old('email') }}"
+                                placeholder="Votre adresse e-mail" required />
+                            @error('email')
+                                <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div>
+                            <label>Téléphone *</label>
+                            <input type="text" name="phone" value="{{ old('phone') }}"
+                                placeholder="Votre numéro de téléphone" required />
+                            @error('phone')
+                                <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>Adresse postale * (adresse, ville, pays)</label>
+                        <input type="text" name="address" value="{{ old('address') }}"
+                            placeholder="Votre adresse postale" required />
+                        @error('address')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <label>Adresse e-mail *</label>
-                        <input type="email" name="email" placeholder="Votre adresse e-mail" required />
-                    </div>
-                    <div>
-                        <label>Téléphone *</label>
-                        <input type="text" name="phone" placeholder="Votre numéro de téléphone" required />
-                    </div>
-                </div>
-                <div>
-                    <label>Adresse postale *</label>
-                    <input type="text" name="address" placeholder="Votre adresse postale" required />
-                </div>
-            </div>
-            <span></span>
-            <div>
-                <h3>Le chiot</h3>
-                <div>
-                    <div>
-                        <label>Race souhaitée *</label>
-                        <select name="breed" required>
-                            <option value="" selected>- Sélectionner une race -</option>
-                            <option value="samoyede">Samoyède</option>
-                            <option value="staffordshire-bull-terrier">Staffordshire Bull Terrier</option>
-                            <option value="berger-americain">Berger Américain</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Quel chiot vous fait craquer ? </label>
-                        <select name="puppy">
-                            <option value="" selected>- Sélectionner une option -</option>
-                            <option value="samoyede">liste d'attente</option>
-                            <option value="puppy-id">chiot collier rose</option>
-                            <option value="puppy-id">chiot collier rose</option>
-                        </select>
-                    </div>
-                </div>
+
                 <span></span>
+
+                <div>
+                    <h3>Le chiot</h3>
+                    <div>
+                        <div>
+                            <label>Race souhaitée *</label>
+                            <select name="breed_id" x-model="breedSelect" @change="onBreedChange()" required>
+                                <option value="">- Sélectionner une race -</option>
+                                @foreach ($breeds as $breed)
+                                    <option value="{{ $breed->id }}">{{ $breed->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('breed_id')
+                                <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label>Quel chiot vous fait craquer ?</label>
+                            <select name="puppy_id" x-model="puppySelect" :disabled="!breedSelect">
+                                <option value=""
+                                    x-text="!breedSelect ? '- Sélectionnez d\'abord une race -' : '- Sélectionner un chiot -'">
+                                </option>
+                                <template x-for="puppy in filteredPuppies" :key="puppy.id">
+                                    <option :value="puppy.id" x-text="puppy.name"></option>
+                                </template>
+                                <template x-if="breedSelect">
+                                    <option value="waiting_list">Inscription sur liste d'attente</option>
+                                </template>
+                            </select>
+                            @error('puppy_id')
+                                <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <span></span>
+
                 <div>
                     <h3>Votre mode de vie</h3>
                     <div>
                         <div>
-                            <label>Situation du logement</label>
-                            <select name="houding" required>
-                                <option value="" selected>- Sélectionner un type de logement -</option>
-                                <option value="house-yard">Maison avec un jardin</option>
-                                <option value="house-no-yard">Maison sans jardin</option>
-                                <option value="apartment">Appartement</option>
-                                <option value="other">Autre</option>
-                            </select>
-                        </div>
-                        <div>
                             <div>
-                                <label>Expérience canine </label>
-                                <select name="canine_experience">
-                                    <option value="" selected>- Sélectionner une option -</option>
-                                    <option value="first-dog">Premier chien</option>
-                                    <option value="already">J'en ai déjà eu</option>
-                                    <option value="advanced">Propriétaire expérimenté</option>
-                                    <option value="pro-dog">Professionel canin</option>
+                                <label>Situation du logement *</label>
+                                <select name="housing" required>
+                                    <option value="">- Sélectionner un type de logement -</option>
+                                    <option value="house-yard" @selected(old('housing') === 'house-yard')>Maison avec un
+                                        jardin</option>
+                                    <option value="house-no-yard" @selected(old('housing') === 'house-no-yard')>Maison
+                                        sans jardin</option>
+                                    <option value="apartment" @selected(old('housing') === 'apartment')>Appartement
+                                    </option>
+                                    <option value="other" @selected(old('housing') === 'other')>Autre</option>
                                 </select>
+                                @error('housing')
+                                    <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                                @enderror
                             </div>
+
                             <div>
-                                <label>Enfants ?</label>
-                                <select name="children">
-                                    <option value="" selected>- Sélectionner une option -</option>
-                                    <option value="yes">Oui</option>
-                                    <option value="no">Non</option>
-                                </select>
+                                <div>
+                                    <label>Expérience canine</label>
+                                    <select name="canine_experience">
+                                        <option value="">- Sélectionner une option -</option>
+                                        <option value="first-dog" @selected(old('canine_experience') === 'first-dog')>
+                                            Premier chien</option>
+                                        <option value="already" @selected(old('canine_experience') === 'already')>J'en ai
+                                            déjà eu</option>
+                                        <option value="advanced" @selected(old('canine_experience') === 'advanced')>
+                                            Propriétaire expérimenté</option>
+                                        <option value="pro-dog" @selected(old('canine_experience') === 'pro-dog')>
+                                            Professionnel canin</option>
+                                    </select>
+                                    @error('canine_experience')
+                                        <small
+                                            style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div>
+                                    <label>Enfants ?</label>
+                                    <select name="children">
+                                        <option value="">- Sélectionner une option -</option>
+                                        <option value="yes" @selected(old('children') === 'yes')>Oui</option>
+                                        <option value="no" @selected(old('children') === 'no')>Non</option>
+                                    </select>
+                                    @error('children')
+                                        <small
+                                            style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <label>Autre animaux ?</label>
-                            <input type="text" name="other_pets"
-                                placeholder="Quels animaux avez-vous déjà dans votre foyer ?" />
+
+                            <div>
+                                <label>Autres animaux ?</label>
+                                <input type="text" name="other_pets" value="{{ old('other_pets') }}"
+                                    placeholder="Quels animaux avez-vous déjà dans votre foyer ?" />
+                                @error('other_pets')
+                                    <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                                @enderror
+                            </div>
                         </div>
                     </div>
+
+                    <span></span>
+
+                    <div>
+                        <label>Votre message *</label>
+                        <textarea name="message"
+                            placeholder="Parlez-nous de votre projet ou posez-nous des questions..."
+                            required>{{ old('message') }}</textarea>
+                        @error('message')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
+                    </div>
+
+                    <button type="submit">Envoyer mon dossier</button>
                 </div>
-                <span></span>
-                <div>
-                    <label>Votre message *</label>
-                    <textarea name="message"
-                        placeholder="Parler nous de votre projet  ou posez-nous des questions ... " required></textarea>
-                </div>
-                <button type="submit">Envoyer mon dossier</button>
+            </div>
         </form>
+        <small>
+            En soumettant ce formulaire, vous acceptez que les informations saisies soient transmises par e-mail à
+            l'éleveuse pour traiter votre demande. Pour en savoir plus sur la gestion de vos données,
+            consultez notre <a href="/politique-de-confidentialite">Politique de Confidentialité</a>.
+        </small>
     </section>
 </x-layout>

@@ -1,6 +1,5 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -13,18 +12,25 @@
     --color-dark-blue: #2D2066;
     --color-purple: #4F34C7;
     --color-light-purple: #C2B8F0;
-    --table-purple: #EEEAFF;
+    --color-table-purple: #EEEAFF;
+    --color-dark-purple: #2D2066;
     --color-light-blue: #7EC4FE;
     --color-dark-grey: #696969;
     --color-grey: #8F8F8F;
     --color-light-grey: #C8C8C8;
-    --border-grey: #E5E5E5;
+    --color-border-grey: #E5E5E5;
     --color-light-green: #ECFDF5;
     --color-dark-green: #208C6B;
     --color-light-yellow: #FFFEE0;
     --color-dark-yellow: #BFBF23;
     --color-pink: #EA3EF7;
     --color-blue-male: #0021F5;
+}
+
+/* Applique la réinitialisation directement sans passer par @layer */
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .spinner {
@@ -36,13 +42,902 @@
     animation: spin 1s linear infinite;
 }
 
-
 @keyframes spin {
     0% {
-        transform: rotate(0deg);    
+        transform: rotate(0deg);
     }
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.hover-fill-text {
+    display: inline-block;
+    background: linear-gradient(to right, var(--color-purple) 50%, var(--color-dark-grey) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 0.4s ease-in-out, transform 0.3s ease-in-out;
+    transform-origin: center;
+}
+
+.hover-fill-text:hover,
+.hover-fill-text.active {
+    background-position: 0 0;
+}
+
+.hover-fill-text:hover {
+    transform: scale(1.08);
+}
+
+body {
+    font-family: var(--font-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-stretch: 105%;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "ss01" on, "zero" on;
+}
+
+footer li,
+footer h5 {
+    letter-spacing: 0.070em;
+}
+
+.title-footer {
+    font-size: 2.25rem;
+    font-family: var(--font-title);
+    color: white;
+}
+
+.footer-link {
+    transition: color 300ms ease-in-out;
+}
+
+.footer-link:hover {
+    color: #ffffff;
+}
+
+.separator {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 0 auto;
+    border-radius: 999px;
+}
+
+.btn-purple {
+    display: inline-block;
+    border: 2px solid var(--color-purple);
+    border-radius: 9999px;
+    padding: 0.625rem 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: var(--color-purple);
+    transition: all 300ms ease-in-out;
+}
+
+.btn-purple:hover,
+.btn-purple.active {
+    background-color: #ffffff;
+    color: var(--color-purple) !important;
+}
+
+.btn-white {
+    display: inline-block;
+    border: 2px solid white;
+    border-radius: 9999px;
+    padding: 0.625rem 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-weight: 600;
+    color: var(--color-purple);
+    background-color: white;
+    transition: all 300ms ease-in-out;
+}
+
+.btn-white:hover,
+.btn-white.active {
+    background-color: var(--color-purple);
+    color: white !important;
+}
+
+.size-pre-footer {
+    font-size: clamp(1.875rem, 4vw, 3.25rem);
+    font-weight: 600;
+}
+
+.pre-footer-btn {
+    display: inline-block;
+    width: 92%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: 2px solid white;
+    border-radius: 9999px;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--color-purple);
+    background-color: white;
+    transition: all 300ms ease-in-out;
+    font-size: clamp(0.85rem, 1.2vw, 1.25rem);
+    padding: clamp(0.75rem, 1.5vw, 1.25rem) clamp(1.25rem, 2vw, 1.75rem);
+}
+
+@media (min-width: 768px) {
+    .pre-footer-btn {
+        width: auto;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+.title-banniere {
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: clamp(2.5rem, 7vw, 6.25rem);
+    margin: 0% 0% 2% 0%;
+}
+
+.btn-banniere {
+    display: inline-block;
+    border-radius: 9999px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    color: #ffffff;
+    transition: all 300ms ease-in-out;
+    font-size: clamp(0.80rem, 1.1vw, 1.25rem);
+    padding: clamp(0.60rem, 1.5vw, 1rem) clamp(1.50rem, 2vw, 1.80rem);
+}
+
+.purple {
+    border: 2px solid var(--color-purple);
+    background-color: var(--color-purple);
+}
+
+.transparent {
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.22);
+}
+
+.purple:hover,
+.purple.active,
+.transparent:hover,
+.transparent.active {
+    border: 2px solid var(--color-purple);
+    background-color: white;
+    color: var(--color-purple) !important;
+}
+
+.sub-title {
+    color: var(--color-purple);
+    letter-spacing: 0.05em;
+    font-size: clamp(1rem, 1.1vw, 1.25rem);
+}
+
+.title {
+    color: var(--color-dark-purple);
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.15;
+}
+
+.title-description {
+    color: var(--color-grey);
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+    font-size: clamp(0.95rem, 1.1vw, 1rem);
+}
+
+.card-sub-title {
+    color: var(--color-purple);
+    letter-spacing: 0.05em;
+    font-size: clamp(0.65rem, 0.8vw, 0.95rem);
+}
+
+.card-title {
+    color: var(--color-dark-purple);
+    font-family: var(--font-title);
+    font-size: clamp(1.45rem, 3.65vw, 2.75rem);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.15;
+}
+
+.card-title-description {
+    color: var(--color-grey);
+    letter-spacing: 0.05em;
+    font-size: clamp(0.60rem, 0.9vw, 0.80rem);
+}
+
+/* ============ BASE = TÉLÉPHONE ============ */
+.race-feature {
+    display: flex;
+    flex-direction: column;      /* photo en haut, texte en dessous */
+    width: 100%;
+}
+
+.race-feature-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;         /* hauteur de la photo proportionnelle à la largeur */
+    height: auto;
+    object-fit: cover;
+}
+
+.race-feature-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.25rem;
+}
+
+.race-feature-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.race-stat {
+    flex: 1;                     /* les deux mini-cartes se partagent la largeur */
+    max-width: 11rem;
+        border-radius: 0.5rem;
+    padding: 0.5rem 0.9rem;
+}
+
+.race-stat p {
+    margin: 0.25rem 0 0;
+}
+
+.race-feature-footer {
+    display: flex;
+    justify-content: center;
+}
+
+/* ============ DESKTOP (≥ 1024px) ============ */
+@media (min-width: 1024px) {
+
+    .race-feature {
+        flex-direction: row;     /* photo à gauche, texte à droite */
+        min-height: clamp(18rem, 26vw, 26rem);
+    }
+
+    .race-feature-img {
+        width: 50%;
+        aspect-ratio: auto;      /* annule le ratio du téléphone */
+        align-self: stretch;
+        height: auto;
+    }
+
+    .race-feature-body {
+        width: 50%;
+        justify-content: space-between;
+        gap: 0;
+        padding: clamp(1rem, 2.2vw, 2rem);
+    }
+
+    .race-stat {
+        flex: none;
+        max-width: none;
+        min-width: 25%;
+    }
+
+    .race-feature-stats {
+        gap: clamp(1rem, 4vw, 4rem);
+    }
+}
+
+/* Bouton : plus de marges latérales, taille responsive */
+.btn-purple-normal {
+    display: inline-block;
+    border: 2px solid var(--color-purple);
+    border-radius: 9999px;
+    padding: clamp(0.45rem, 0.7vw, 0.625rem) clamp(0.9rem, 1.4vw, 1.25rem);
+    margin: 0;
+    font-size: clamp(0.95rem, 1.1vw, 1.20rem);
+    color: #fff;
+    background-color: var(--color-purple);
+    transition: all 300ms ease-in-out;
+}
+
+.btn-purple-normal:hover,
+.btn-purple-normal.active {
+    background-color: #ffffff;
+    color: var(--color-purple) !important;
+}
+
+/* ============ BASE = TÉLÉPHONE ============ */
+.races-container {
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.race-card {
+    width: 100%;
+    max-width: 28rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* indispensable pour .race-link et .race-title */
+    --pad-x: 1.25rem;
+}
+
+.race-card .race-image-container {
+    aspect-ratio: 4 / 2.5;
+    flex-shrink: 0;
+}
+
+.race-card>div:last-child {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem var(--pad-x) 1.75rem;
+}
+
+.race-card>div:last-child p {
+    margin-top: 0.4rem;
+}
+
+.race-card .card-overlay {
+    opacity: 0;
+}
+
+.race-title {
+    left: var(--pad-x);
+    bottom: var(--pad-x);
+    font-size: 1.25rem;
+    line-height: 1.15;
+}
+
+.race-tag {
+    font-size: 1rem;
+}
+
+.race-text {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: #8F8F8F;
+    transition: color 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.race-card.active-card .race-text {
+    color: #696969;
+}
+
+.race-link {
+    position: absolute;
+    right: var(--pad-x);
+    bottom: var(--pad-x);
+    font-size: clamp(0.75rem, 0.95vw, 0.95rem);
+    color: var(--color-purple);
+    text-align: right;
+    display: block;
+    width: fit-content;
+}
+
+/* ============  ET PLUS ============ */
+@media (min-width: 1024px) {
+
+    .races-container {
+        --w-normal: 24%;
+        --w-big: 32%;
+        flex-direction: row;
+        padding-left: 0;
+        padding-right: 0;
+        min-height: 0;
+        min-width: 0;
+        pointer-events: none;
+
+        /* Hauteur FIXE = hauteur de la grande carte (30% de la largeur) */
+        aspect-ratio: 100 / 32;
+        /* = 100 / --w-big */
+    }
+
+    .race-card {
+        position: relative;
+        --pad-x: clamp(0.75rem, 1.2vw, 1.25rem);
+        flex: 0 0 auto;
+        min-width: 0;
+        max-width: none;
+        width: var(--w-normal);
+        aspect-ratio: 4/4;
+        opacity: 0.85;
+        transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: auto;
+    }
+
+    .race-card .race-image-container {
+        aspect-ratio: 4 / 2.4;
+    }
+
+    /* Bloc texte : on réserve la place du lien en bas */
+    .race-card>div:last-child {
+        display: block;
+        padding: 0.75rem var(--pad-x) 2.75rem;
+    }
+
+    .race-card>div:last-child p {
+        margin-top: 0.25rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .race-card .card-overlay {
+        opacity: 1;
+    }
+
+    /* Au repos : Samoyède mis en avant */
+    .races-container:not(:hover) .race-card.active-card {
+        width: var(--w-big);
+        opacity: 1;
+        z-index: 10;
+    }
+
+    .races-container:not(:hover) .race-card.active-card .card-overlay {
+        opacity: 0;
+    }
+
+    .races-container:not(:hover) .race-card.active-card>div:last-child p,
+    .races-container .race-card:hover>div:last-child p {
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
+
+    /* Survol d'une autre carte : Samoyède redevient normal */
+    .races-container:hover .race-card.active-card {
+        width: var(--w-normal);
+        opacity: 0.85;
+    }
+
+    .races-container:hover .race-card.active-card .card-overlay {
+        opacity: 1;
+    }
+
+    /* Carte survolée */
+    .races-container .race-card:hover {
+        width: var(--w-big) !important;
+        opacity: 1 !important;
+        z-index: 20;
+    }
+
+    .races-container .race-card:hover .card-overlay {
+        opacity: 0 !important;
+    }
+
+    .race-title {
+        font-size: clamp(0.95rem, 1.8vw, 2rem);
+    }
+
+    .race-tag {
+        font-size: clamp(0.75rem, 1vw, 0.95rem);
+    }
+
+    .race-text {
+        font-size: clamp(0.7rem, 0.95vw, 0.9rem);
+        color: #8F8F8F;
+        transition: color 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .races-container:not(:hover) .race-card.active-card .race-text,
+    .races-container .race-card:hover .race-text {
+        color: #696969;
+    }
+
+    .race-link {
+        right: var(--pad-x);
+        bottom: clamp(0.6rem, 1vw, 1rem);
+    }
+}
+
+/* ============ BASE = TÉLÉPHONE ============ */
+.story-grid {
+    display: block;
+    position: relative;
+}
+
+.story-image-col {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+}
+
+.story-image-wrap {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+
+/* Badge masqué sur téléphone */
+.story-badge {
+    display: none;
+}
+
+/* Le texte glisse par-dessus l'image au scroll */
+.story-text-col {
+    position: relative;
+    z-index: 1;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 -10px 25px -10px rgba(0, 0, 0, 0.08);
+    margin-top: -3rem;
+
+    min-height: calc(100vw - (2 * var(--section-px, 1rem)));
+    /* même hauteur que l'image carrée */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* centre le texte verticalement s'il y a de la place */
+
+    padding: 2.5rem 1.5rem 1.5rem;
+    gap: 1.1rem;
+}
+
+.story-text {
+    color: var(--color-dark-purple);
+    font-size: clamp(0.95rem, 3vw, 1.05rem);
+    line-height: 1.6;
+    letter-spacing: 0.015em;
+    text-align: center;
+}
+
+.story-badge-number {
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+}
+
+.story-badge-text {
+    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+    line-height: 1.3;
+    display: block;
+}
+
+:root {
+    --nav-height: 92px;
+    /* par défaut : ≥640px (jusqu'au format tablette) */
+}
+
+@media (max-width: 639px) {
+    :root {
+        --nav-height: 76px;
+        /* de 382px à 639px */
+    }
+}
+
+@media (max-width: 381px) {
+    :root {
+        --nav-height: 92px;
+        /* en dessous de 382px */
+    }
+}
+
+.story-image-col {
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 0;
+}
+
+/* ============ TABLETTE / DESKTOP ============ */
+@media (min-width: 1024px) {
+
+    .story-grid {
+        display: flex;
+        /* remet le flex row du desktop */
+        flex-direction: row;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .story-image-col {
+        flex: 0 0 42%;
+        position: relative;
+        top: auto;
+    }
+
+    .story-text-col {
+        flex: 1;
+        background: transparent;
+        box-shadow: none;
+        margin-top: 0;
+        min-height: 0;
+        padding: 0;
+        text-align: left;
+        gap: 1.25rem;
+    }
+
+    .story-image-wrap {
+        aspect-ratio: 1 / 1;
+    }
+
+    .story-badge {
+        display: block;
+        position: absolute;
+        top: clamp(0rem, calc(1rem - (100vw - 1024px) * 0.0174), 1rem);
+        left: clamp(-2.75rem, calc(1rem - (100vw - 1024px) * 0.1042), 1rem);
+        max-width: 12rem;
+        margin: 0;
+        padding: clamp(0.75rem, 1vw, 1rem) clamp(1rem, 1.2vw, 1.25rem);
+        text-align: left;
+    }
+
+    .story-badge-number {
+        font-size: clamp(1.2rem, 1.4vw, 1.4rem);
+    }
+
+    .story-badge-text {
+        font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+    }
+
+    .story-text {
+        font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+        text-align: left;
+    }
+
+}
+
+.engagement-wrap {
+    position: relative;
+    padding: 1rem 0;
+    width: 100vw;
+    /* prend toute la largeur de l'écran */
+    margin-left: calc(-50vw + 50%);
+    /* recentre malgré le max-w du parent */
+}
+
+.engagement-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* toute la largeur de .engagement-wrap */
+    fill: none;
+    stroke: var(--color-purple);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 9 9;
+}
+
+.engagement-card {
+    background: white;
+    border: none;
+    /* plus de bordure */
+    border-radius: 1rem;
+    box-shadow: 1px 2px 7.9px 1px #2D206628;
+    padding: 1.25rem;
+}
+
+.engagement-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    /* logo colonne 1, titre colonne 2 */
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+
+.engagement-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    object-fit: contain;
+}
+
+.engagement-title {
+    display: flex;
+    flex-direction: column;
+    /* le span passe à la ligne */
+    color: var(--color-light-blue);
+    font-weight: 700;
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
+    line-height: 1.3;
+}
+
+.engagement-title span {
+    color: var(--color-purple);
+}
+
+.engagement-text {
+    color: var(--color-grey);
+    font-size: clamp(0.78rem, 1vw, 0.85rem);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ============ BASE = TÉLÉPHONE (< 640px) ============ */
+.wave-desktop,
+.wave-tablet {
+    display: none;
+}
+
+.engagement-grid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+    align-items: center;
+    max-width: 22rem;
+    margin: 0 auto;
+}
+
+.engagement-grid::before {
+    content: "";
+    position: absolute;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    border-left: 2.5px dashed var(--color-purple);
+    z-index: 0;
+}
+
+.engagement-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* ============ TABLETTE (640px à 1023px) ============ */
+@media (min-width: 640px) and (max-width: 1023px) {
+
+    .wave-tablet {
+        display: block;
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        /* la vague reste au centre, entre les cartes gauche/droite */
+        height: 100%;
+        z-index: 0;
+        stroke-width: 1.5;
+    }
+
+    .engagement-grid {
+        position: relative;
+        max-width: 26rem;
+        gap: 4rem;
+        /* un peu resserré */
+    }
+
+    .engagement-grid::before {
+        display: none;
+    }
+
+    .engagement-card {
+        position: relative;
+        z-index: 1;
+        width: 68%;
+        min-height: 8rem;
+        /* moins haute qu'avant (probablement 10rem+) */
+        padding: 1.25rem 1.1rem;
+    }
+
+    .engagement-card:nth-child(odd) {
+        align-self: flex-start;
+    }
+
+    .engagement-card:nth-child(even) {
+        align-self: flex-end;
+    }
+}
+
+
+
+/* ============ DESKTOP (≥ 1024px) ============ */
+@media (min-width: 1024px) {
+
+    .wave-desktop {
+        display: block;
+        top: 4rem;
+    }
+
+    .wave-tablet {
+        display: none;
+    }
+
+    .engagement-wrap {
+        padding: 4rem 0 3rem;
+    }
+
+    .engagement-grid {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        max-width: 70%;
+        /* les cartes occupent 70 à 80% */
+        margin: 0 auto;
+        gap: 2rem;
+    }
+
+    .engagement-card {
+        width: 20%;
+        min-height: 13rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1.5rem 1.25rem;
+    }
+
+    .engagement-grid::before {
+        display: none;
+    }
+
+    .engagement-card:nth-child(1) {
+        margin-top: -1.5rem;
+    }
+
+    .engagement-card:nth-child(2) {
+        margin-top: 9rem;
+    }
+
+    .engagement-card:nth-child(3) {
+        margin-top: -1.5rem;
+    }
+
+    .engagement-card:nth-child(4) {
+        margin-top: 8rem;
+    }
+}
+
+@media (min-width: 1440px) {
+
+    .engagement-card {
+        width: 18%;
+        min-height: 13rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1.5rem 1.25rem;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+
+    .engagement-grid {
+        max-width: 82%;
+        /* plus large qu'avant (70%), pour donner plus de place aux cartes */
+        gap: 1.5rem;
+        /* légèrement réduit pour compenser */
+    }
+
+    .engagement-card {
+        width: 22%;
+        /* plus large qu'avant (18%) */
+        min-height: 14rem;
+        /* réduit si 17rem rend les cartes trop hautes sur cette plage */
+    }
+
+    .engagement-wrap {
+        padding: 4rem 0 0rem;
+    }
+
+    .engagement-card:nth-child(1) {
+        margin-top: -2rem;
+    }
+
+    /* avant : -1.5rem */
+    .engagement-card:nth-child(2) {
+        margin-top: 3.5rem;
+    }
+
+    /* avant : 6rem */
+    .engagement-card:nth-child(3) {
+        margin-top: -2rem;
+    }
+
+    /* avant : -1.5rem */
+    .engagement-card:nth-child(4) {
+        margin-top: 2.5rem;
     }
 }

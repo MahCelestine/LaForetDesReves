@@ -120,18 +120,10 @@ class PuppyController extends Controller
         return redirect()->route('back.back-chiot');
     }
 
-    public function show()
-    {
-        return view('front.chiot');
-    }
 
     public function indexBack(Request $request)
     {
         return view('back.back-chiot');
     }
 
-    public function index()
-    {
-        return view('front.nos-chiots');
-    }
 }

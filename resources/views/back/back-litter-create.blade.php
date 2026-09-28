@@ -2,17 +2,24 @@
     <x-layout-back />
     <div>
         <h1>Ajouter une portée</h1>
+
+        @if ($errors->any())
+            <div style="background-color: #f8d7da; color: #721c24; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
+                Certains champs contiennent des erreurs. Veuillez vérifier le formulaire ci-dessous.
+            </div>
+        @endif
+
         <form action="{{ route('back.back-litter-store') }}" method="POST" x-data="{
-            breedSelect: '',
-            dadSelect: '',
-            momSelect: '',
+            breedSelect: '{{ old('breed_id') }}',
+            dadSelect: '{{ old('dad_id') }}',
+            momSelect: '{{ old('mom_id') }}',
             dogs: @js($dogs),
             
             get dads() {
-                return this.dogs.filter(dog => dog.sex === 'male' && dog.breed_id == this.breedSelect && !dog.is_external);
+                return this.dogs.filter(dog => dog.sex === 'male' && dog.breed_id == this.breedSelect);
             },
             get moms() {
-                return this.dogs.filter(dog => dog.sex === 'female' && dog.breed_id == this.breedSelect && !dog.is_external);
+                return this.dogs.filter(dog => dog.sex === 'female' && dog.breed_id == this.breedSelect);
             },
             
             onBreedChange() {
@@ -26,22 +33,27 @@
                 <div>
                     <div>
                         <label>Date de mise à bas</label>
-                        <input type="date" name="birth_date" />
+                        <input type="date" name="birth_date" value="{{ old('birth_date') }}" />
+                        @error('birth_date')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div>
                         <label>Race</label>
                         <select name="breed_id" x-model="breedSelect" @change="onBreedChange()" required>
                             <option value="">Sélectionner la race</option>
                             @foreach ($breeds as $breed)
-                                <option value="{{ $breed->id }}">{{ $breed->name }}</option>
+                                <option value="{{ $breed->id }}" @selected(old('breed_id') == $breed->id)>{{ $breed->name }}</option>
                             @endforeach
                         </select>
+                        @error('breed_id')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
                 <span></span>
                 <div>
-                    <h2>Attention avant de choisir les parents sélectionner la race pour que la liste des reproducteurs
-                        corresponde</h2>
+                    <h2>Attention avant de choisir les parents sélectionner la race pour que la liste des reproducteurs correspond</h2>
                     <div>
                         <label>Père</label>
                         <select name="dad_id" x-model="dadSelect" :disabled="!breedSelect" required>
@@ -49,9 +61,12 @@
                                 x-text="!breedSelect ? '- Sélectionnez d\'abord une race -' : '- Sélectionner le père -'">
                             </option>
                             <template x-for="dad in dads" :key="dad.id">
-                                <option :value="dad.id" x-text="dad.common_name + (dad.is_external ? ' (Externe)' : '')"></option>
+                                <option :value="dad.id" x-text="dad.common_name + (dad.is_external ? ' (Externe)' : '')" :selected="dad.id == dadSelect"></option>
                             </template>
                         </select>
+                        @error('dad_id')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div>
                         <label>Mère</label>
@@ -60,14 +75,18 @@
                                 x-text="!breedSelect ? '- Sélectionnez d\'abord une race -' : '- Sélectionner la mère -'">
                             </option>
                             <template x-for="mom in moms" :key="mom.id">
-                                <option :value="mom.id" x-text="mom.common_name + (mom.is_external ? ' (Externe)' : '')"></option>
+                                <option :value="mom.id" x-text="mom.common_name + (mom.is_external ? ' (Externe)' : '')" :selected="mom.id == momSelect"></option>
                             </template>
                         </select>
+                        @error('mom_id')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
-                <input type="hidden" name="number_puppies" value="0" />
+                <input type="hidden" name="number_puppies" value="{{ old('number_puppies', 0) }}" />
                 <span></span>
-                <button type="submit">Créer une nouvelle porté</button>
+                <button type="submit">Créer une nouvelle portée</button>
+            </div>
         </form>
     </div>
     <livewire:loading-overlay />

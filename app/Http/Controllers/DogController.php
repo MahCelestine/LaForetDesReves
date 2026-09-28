@@ -99,11 +99,6 @@ class DogController extends Controller
         return redirect()->route('back.back-chien');
     }
 
-    public function show()
-    {
-        return view('front.chien');
-    }
-
     public function indexBack(Request $request)
     {
         $dogs = Dog::with('breed')->get();
@@ -112,8 +107,4 @@ class DogController extends Controller
         return view('back.back-chien', compact('dogs', 'breeds'));
     }
 
-    public function index()
-    {
-        return view('front.nos-reproducteurs');
-    }
 }

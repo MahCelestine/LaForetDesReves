@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DogController;
 use App\Http\Controllers\LitterController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\BreedController;
+use App\Http\Controllers\ContactController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -18,39 +20,34 @@ Route::get('/nos-races', function () {
     return view('front.nos-races');
 });
 
+Route::get('/nos-races/{slug}', [BreedController::class, 'show'])->name('front.breeds.show');
+
+Route::get('/nos-races/{slug}/nos-reproducteurs', [BreedController::class, 'showBreedDogs'])->name('front.breeds.dogs');
+
+Route::get('/nos-races/{slug}/nos-reproducteurs/{dogSlug}', [BreedController::class, 'showDogDetails'])->name('front.breeds.dog-details');
+
+Route::get('/nos-races/{slug}/nos-chiots', [BreedController::class, 'showBreedPuppies'])->name('front.breeds.puppies');
+
+Route::get('/nos-races/{slug}/nos-chiots/{puppySlug}', [BreedController::class, 'showPuppyDetails'])->name('front.breeds.puppy-details');
+
 Route::get('/le-guide-de-l-adoption', function () {
     return view('front.le-guide-de-l-adoption');
 });
 
-Route::get('/nous-contacter', function () {
-    return view('front.contact');
+Route::get('/le-coin-conseil', [ContentController::class, 'indexFront'])->name('front.content.index');
+
+Route::get('/le-coin-conseil/{content:slug}', [ContentController::class, 'show'])->name('front.content.content-details');
+
+Route::get('/nous-contacter', [ContactController::class, 'create'])->name('front.contact');
+
+Route::post('/nous-contacter', [ContactController::class, 'submit'])->name('front.contact.submit');
+
+Route::get('/mentions-legales', function() {
+    return view('front.mentions-legales');
 });
 
-Route::get('/nos-races/samoyede', function () {
-    return view('front.samoyede');
-});
-
-Route::get('/nos-races/berger-americain', function () {
-    return view('front.berger-americain');
-});
-
-Route::get('/nos-races/staffordshire-bull-terrier', function () {
-    return view('front.staffie');
-});
-
-Route::get('/nos-races/samoyede/nos-reproducteurs', function () {
-    /////voir pour faire en sorte que le nom de la race change dynamiquement comme 
-    // le contenue de nos reprodcuteur avec un contexte comme cca mais avec la race 
-    // donc l'index doit suivre
-    return view('front.nos-reproducteurs');
-});
-
-Route::get('/nos-races/samoyede/nos-chiots', function () {
-    return view('front.nos-chiots');
-});
-
-Route::get('/le-coin-conseil/article', function () {
-    return view('front.content');
+Route::get('/politique-de-confidentialite', function() {
+    return view('front.politique-confidentialite');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -86,3 +83,4 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('back-content/{content}', [ContentController::class, 'destroy'])->name('back.back-content-destroy');
 
 });
+

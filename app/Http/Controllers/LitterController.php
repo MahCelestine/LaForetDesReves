@@ -14,6 +14,10 @@ class LitterController extends Controller
     {
         $validated = $request->validated();
 
+        if ($validated['birth_date'] > now()->format('Y-m-d')) {
+            $validated['status'] = 'futur';
+        }
+
         Litter::create($validated);
 
         return redirect()->route('back.back-chiot');
@@ -36,13 +40,18 @@ class LitterController extends Controller
     public function update(StoreLitterRequest $request, Litter $litter)
     {
         $validated = $request->validated();
+        if (isset($validated['birth_date']) && $validated['birth_date'] > now()->format('Y-m-d')) {
+            $validated['status'] = 'future';
+        } elseif ($litter->status === 'future') {
+            $validated['status'] = 'en cours';
+        }
         $litter->update($validated);
         $litter->puppies()->update([
-        'birth_date' => $litter->birth_date,
-        'dad_id'     => $litter->dad_id,
-        'mom_id'     => $litter->mom_id,
-        'breed_id'   => $litter->breed_id,
-    ]);
+            'birth_date' => $litter->birth_date,
+            'dad_id' => $litter->dad_id,
+            'mom_id' => $litter->mom_id,
+            'breed_id' => $litter->breed_id,
+        ]);
         return redirect()->route('back.back-chiot');
     }
 
@@ -58,8 +67,4 @@ class LitterController extends Controller
         return view('back.back-chiot');
     }
 
-    public function index()
-    {
-        return view('front.nos-chiots');
-    }
 }

@@ -1,5 +1,5 @@
-<x-layout-back />
 <div>
+    <x-layout-back />
     @if ($content->is_video == 0)
         <script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js" referrerpolicy="origin"></script>
         <script>
@@ -18,6 +18,13 @@
     @endif
     <div>
         <h1>Modifier un article</h1>
+
+        @if ($errors->any())
+            <div style="background-color: #f8d7da; color: #721c24; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
+                Certains champs contiennent des erreurs. Veuillez vérifier le formulaire ci-dessous.
+            </div>
+        @endif
+
         <form action="{{ route('back.back-content-update', $content) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -25,67 +32,91 @@
             <h2>Informations</h2>
             <div>
                 <div>
-                    <label>Titre</label>
-                    <input type="text" name="title" value="{{ $content->title }}" required />
-                </div>
-                @if ($content->is_video == 1)
                     <div>
-                        <label>Lien vidéo</label>
-                        <input type="text" name="tiktok_path" value="{{ $content->tiktok_path }}" />
+                        <label>Titre</label>
+                        <input type="text" name="title" value="{{ old('title', $content->title) }}" required />
+                        @error('title')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    @if ($content->is_video == 1)
+                        <div>
+                            <label>Lien vidéo</label>
+                            <input type="text" name="tiktok_path" value="{{ old('tiktok_path', $content->tiktok_path) }}" />
+                            @error('tiktok_path')
+                                <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    @endif
+                </div>
+                <div>
+                    <div>
+                        <label>Catégorie</label>
+                        <select name="category_id" required>
+                            <option value="">- Sélectionnez -</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @selected((string) old('category_id', $content->category_id) === (string) $category->id)>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div>
+                        <label>Publié</label>
+                        <select name="is_published" required>
+                            <option value="">- Sélectionnez -</option>
+                            <option value="1" @selected((string) old('is_published', $content->is_published) === '1')>Publié</option>
+                            <option value="0" @selected((string) old('is_published', $content->is_published) === '0')>Brouillon</option>
+                        </select>
+                        @error('is_published')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+                <div>
+                    <label>Introduction de l'article </label>
+                    <input type="text" name="extract" value="{{ old('extract', $content->extract) }}" />
+                    @error('extract')
+                        <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                    @enderror
+                </div>
+                @if ($content->is_video == 0)
+                    <div>
+                        <label>Contenu de l'article</label>
+                        <textarea id="content-editor" name="content">{{ old('content', $content->content) }}</textarea>
+                        @error('content')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
+                    </div>
+                @else
+                    <div>
+                        <textarea name="content" disabled>{{ $content->content }}</textarea>
                     </div>
                 @endif
-            </div>
-            <div>
-                <div>
 
-                    <label>Catégorie</label>
-                    <select name="category_id" required>
-                        <option value="">- Sélectionnez -</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" {{ $content->category_id == $category->id ? 'selected' : '' }}>
-                                {{ $category->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
+                <span></span>
                 <div>
-                    <label>Publié</label>
-                    <select name="is_published" required>
-                        <option value="">- Sélectionnez -</option>
-                        <option value="1" {{ $content->is_published == 1 ? 'selected' : '' }}>Publié</option>
-                        <option value="0" {{ $content->is_published == 0 ? 'selected' : '' }}>Brouillon</option>
-                    </select>
-                </div>
-            </div>
-            <div>
-                <label>Introduction de l'article </label>
-                <input type="text" name="extract" value="{{ $content->extract }}" />
-            </div>
-            @if ($content->is_video == 0)
-                <div>
-                    <label>Contenu de l'article</label>
-                    <textarea id="content-editor" name="content">{{ old('content', $content->content) }}</textarea>
-                </div>
-            @else
-                <div>
-                    <textarea name="content" disabled>{{ $content->content }}</textarea>
-                </div>
-            @endif
-
-            <span></span>
-            <div>
-                <h2>Photos</h2>
-                <div>
-                    <label>Pour le thumbnail</label>
+                    <h2>Photos</h2>
                     <div>
-                        <img src="{{ asset('storage/' . $content->image_path) }}" alt="Mon image">
-                        <small>Image actuelle</small>
+                        <label>Pour le thumbnail</label>
+                        @if ($content->image_path)
+                            <div>
+                                <img src="{{ asset('storage/' . $content->image_path) }}" alt="Mon image" style="max-width: 150px;">
+                                <small>Image actuelle</small>
+                            </div>
+                        @endif
+                        <input type="file" name="image_path" />
+                        @error('image_path')
+                            <small style="color: #dc3545; display: block; margin-top: 4px;">{{ $message }}</small>
+                        @enderror
                     </div>
-                    <input type="file" name="image_path" />
                 </div>
+                <span></span>
+                <button type="submit">Modifier l'article</button>
             </div>
-            <span></span>
-            <button type="submit">Modifier l'article</button>
         </form>
     </div>
     <livewire:loading-overlay />

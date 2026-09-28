@@ -18,12 +18,22 @@ class Content extends Model
         'publication_date',
         'is_published',
         'is_video',
+        'slug',
     ];
 
     protected $casts = [
         'publication_date' => 'date',
         'is_published' => 'boolean',
     ];
+
+    protected static function booted(): void
+    {
+        static::saving(function ($content) {
+            if (empty($content->slug)) {
+                $content->slug = \Str::slug($content->title);
+            }
+        });
+    }
 
     public function category(): BelongsTo
     {

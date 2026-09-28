@@ -1,6 +1,6 @@
 <x-layout>
     <section>
-        <a>← Toutes nos races</a>
+        <a href="/nos-races">← Toutes nos races</a>
         <h2>Standard FCI n°76</h2>
         <h1>Staffordshire Bull Terrier</h1>
         <h3>adjectif de la race</h3>
@@ -205,17 +205,20 @@
                 <small>Reproducteur</small>
                 <h2>Parents</h2>
             </div>
-            <a href="/">Voir plus →</a>
+            <a href="{{ route('front.breeds.dogs', $breed->slug) }}">Voir plus →</a>
         </div>
         <div>
-            <!-- Peut tre faire un carrousel avec tous els repro ou juste 3 et le reste si clique -->
-            <a href="/">
-                <img src="" alt="photo d'un reproducteur samoyède" />
+            @foreach ($randomDogs as $dog)
                 <div>
-                    <p>Nom du reproducteur</p>
-                    <small>sexe du repro</small>
+                    <img src="{{ asset('storage/' . $dog->image_path) }}" alt="photo de {{ $dog->common_name }}" />
+                    <div>
+                        <p>{{ $dog->common_name }}</p>
+                        <small>{{ $dog->sex === 'male' ? 'Mâle' : 'Femelle' }}</small>
+                    </div>
+                    <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $dog->slug]) }}">Voir
+                        plus →</a>
                 </div>
-            </a>
+            @endforeach
         </div>
     </section>
     <section>
@@ -224,18 +227,22 @@
                 <small>Portée</small>
                 <h2>Chiots</h2>
             </div>
-            <a href="/">Voir plus →</a>
+            <a href="{{ route('front.breeds.puppies', $breed->slug) }}">Voir plus →</a>
         </div>
         <div>
-            <!-- Peut tre faire un carrousel avec tous els repro ou juste 3 et le reste si clique -->
-            <a href="/">
-                <img src="" alt="photo d'un chiot samoyède" />
+            @foreach ($randomPuppies as $puppy)
                 <div>
-                    <p>Nom du chiot</p>
-                    <small>sexe du chiot</small>
-                    <small>date de naissance</small>
+                    <img src="{{ asset('storage/' . $puppy->image_path) }}" alt="photo de {{ $puppy->common_name }}" />
+                    <div>
+                        <p>{{ $puppy->name }}</p>
+                        <small>{{ $puppy->sex === 'male' ? 'Mâle' : 'Femelle' }}</small>
+                        <small>{{ $puppy->birth_date->format('d/m/Y') }}</small>
+                    </div>
+                    <a
+                        href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $puppy->slug]) }}">Voir
+                        plus →</a>
                 </div>
-            </a>
+            @endforeach
         </div>
     </section>
     <x-footer-dossier />

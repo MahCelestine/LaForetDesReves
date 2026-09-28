@@ -79,11 +79,6 @@ class ContentController extends Controller
         return redirect()->route('back.back-content');
     }
 
-    public function show()
-    {
-        return view('front.content');
-    }
-
     public function indexBack(Request $request)
     {
         $categories = Category::all();
@@ -94,8 +89,15 @@ class ContentController extends Controller
         return view('back.back-content', compact('categories', 'contents'));
     }
 
-    public function index()
+    public function indexFront(Request $request)
     {
-        return view('front.le-coin-conseil');
+        $categories = Category::all();
+        return view('front.le-coin-conseil', compact('categories'));
     }
+
+    public function show(Content $content)
+    {
+        return view('front.content-details', compact('content'));
+    }
+
 }

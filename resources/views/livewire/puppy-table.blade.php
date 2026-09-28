@@ -9,21 +9,29 @@
                         <p>{{ $litter->birth_date->format('d/m/Y') }}</p>
                     </div>
                     <p>
-                        <i class="bi bi-gender-male"></i> {{ $litter->dad->common_name }} et
+                        <i class="bi bi-gender-male"></i> {{ $litter->dad->common_name }}
+                        @if ($litter->dad->is_external)
+                            - Externe
+                        @endif
+                        et
                         <i class="bi bi-gender-female"></i> {{ $litter->mom->common_name }}
+                        @if ($litter->mom->is_external)
+                            - Externe
+                        @endif
                     </p>
                     <span>{{ $litter->status }}</span>
                     <p>{{ $litter->puppies->count() }} chiot(s)</p>
                     <a href="/back-litter/{{ $litter->id }}/edit"><i class="bi bi-pencil-fill"></i></a>
-                    <form action="{{ route('back.back-litter-destroy', $litter) }}" method="POST" id="delete-litter-form-{{ $litter->id }}">
+                    <form action="{{ route('back.back-litter-destroy', $litter) }}" method="POST"
+                        id="delete-litter-form-{{ $litter->id }}">
                         @csrf
                         @method('DELETE')
                         <button type="button" wire:click="$dispatch('open-delete-modal', {
-                                title: 'la suppression de la portée', 
-                                message: 'Êtes-vous sûr de vouloir supprimer cette portée ? Cette action est irréversible, les chiots seront également supprimés.', 
-                                label: 'Supprimer', 
-                                formId: 'delete-litter-form-{{ $litter->id }}' 
-                                })">
+                                    title: 'la suppression de la portée', 
+                                    message: 'Êtes-vous sûr de vouloir supprimer cette portée ? Cette action est irréversible, les chiots seront également supprimés.', 
+                                    label: 'Supprimer', 
+                                    formId: 'delete-litter-form-{{ $litter->id }}' 
+                                    })">
                             <i class="bi bi-trash3-fill"></i>
                         </button>
                     </form>
@@ -69,11 +77,11 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" wire:click="$dispatch('open-delete-modal', {
-                                                                        title: 'la suppression du chiot', 
-                                                                        message: 'Êtes-vous sûr de vouloir supprimer ce chiot ? Cette action est irréversible.', 
-                                                                        label: 'Supprimer', 
-                                                                        formId: 'delete-puppy-form-{{ $puppy->id }}' 
-                                                                        })">
+                                                                                title: 'la suppression du chiot', 
+                                                                                message: 'Êtes-vous sûr de vouloir supprimer ce chiot ? Cette action est irréversible.', 
+                                                                                label: 'Supprimer', 
+                                                                                formId: 'delete-puppy-form-{{ $puppy->id }}' 
+                                                                                })">
                                                 <i class="bi bi-trash3-fill"></i></button>
                                         </form>
                                     </td>

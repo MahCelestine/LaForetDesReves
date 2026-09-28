@@ -26,6 +26,7 @@ class Puppy extends Model
         'description',
         'image_path',
         'status',
+        'slug',
     ];
 
     protected $casts = [
@@ -34,6 +35,26 @@ class Puppy extends Model
         'price' => 'integer',
         'weight' => 'integer',
     ];
+
+    protected static function booted(): void
+    {
+        static::saving(function ($puppy) {
+            if (empty($puppy->slug) || $puppy->isDirty(['name', 'birth_date'])) {
+                $baseSlug = Str::slug($puppy->name);
+
+                if ($puppy->birth_date) {
+                    $formattedDate = Carbon::parse($puppy->birth_date)->format('d-m-Y');
+                    $baseSlug .= '-' . $formattedDate;
+                }
+
+                $count = Puppy::where('slug', 'LIKE', "{$baseSlug}%")
+                    ->where('id', '!=', $puppy->id)
+                    ->count();
+
+                $puppy->slug = $count ? "{$baseSlug}-{$count}" : $baseSlug;
+            }
+        });
+    }
 
     public function litter(): BelongsTo
     {
