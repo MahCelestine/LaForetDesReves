@@ -259,13 +259,15 @@ footer h5 {
 /* ============ BASE = TÉLÉPHONE ============ */
 .race-feature {
     display: flex;
-    flex-direction: column;      /* photo en haut, texte en dessous */
+    flex-direction: column;
+    /* photo en haut, texte en dessous */
     width: 100%;
 }
 
 .race-feature-img {
     width: 100%;
-    aspect-ratio: 4 / 3;         /* hauteur de la photo proportionnelle à la largeur */
+    aspect-ratio: 4 / 3;
+    /* hauteur de la photo proportionnelle à la largeur */
     height: auto;
     object-fit: cover;
 }
@@ -274,7 +276,6 @@ footer h5 {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
     padding: 1.25rem;
 }
 
@@ -285,9 +286,10 @@ footer h5 {
 }
 
 .race-stat {
-    flex: 1;                     /* les deux mini-cartes se partagent la largeur */
+    flex: 1;
+    /* les deux mini-cartes se partagent la largeur */
     max-width: 11rem;
-        border-radius: 0.5rem;
+    border-radius: 0.5rem;
     padding: 0.5rem 0.9rem;
 }
 
@@ -300,19 +302,29 @@ footer h5 {
     justify-content: center;
 }
 
+.race-feature--reverse .race-feature-img {
+    order: -1;
+}
+
 /* ============ DESKTOP (≥ 1024px) ============ */
 @media (min-width: 1024px) {
 
     .race-feature {
-        flex-direction: row;     /* photo à gauche, texte à droite */
+        flex-direction: row;
+        /* photo à gauche, texte à droite */
         min-height: clamp(18rem, 26vw, 26rem);
     }
 
     .race-feature-img {
         width: 50%;
-        aspect-ratio: auto;      /* annule le ratio du téléphone */
+        aspect-ratio: auto;
+        /* annule le ratio du téléphone */
         align-self: stretch;
         height: auto;
+    }
+
+    .race-feature--reverse .race-feature-img {
+        order: 0;
     }
 
     .race-feature-body {

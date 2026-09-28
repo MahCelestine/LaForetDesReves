@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="race-feature border-2 border-border-grey rounded-4xl overflow-hidden mb-10">
+        <div class="race-feature race-feature--reverse border-2 border-border-grey rounded-4xl overflow-hidden mb-10">
             <div class="race-feature-body">
                 <div>
                     <h3 class="card-sub-title">Standard FCI n°76</h3>
