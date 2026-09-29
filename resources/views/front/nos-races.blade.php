@@ -1,11 +1,11 @@
 <x-layout>
-    <div class="md:py-10 py-4 lg:px-40 md:px-5 max-md:px-2">
+    <div class="md:py-10 py-4 xl:px-40 md:px-5 max-md:px-2">
         <h2 class="sub-title">Nos races</h2>
         <h1 class="title">Trois races d'élite</h1>
         <h3 class="title-description">Chacune sélectionnée pour ses qualités caractérielles, sa santé et ses aptitude
         </h3>
     </div>
-    <section class="md:px-5 max-md:px-2 lg:px-40">
+    <section class="md:px-5 max-md:px-2 xl:px-40">
         <div class="race-feature border-2 border-border-grey rounded-4xl overflow-hidden mb-10">
             <img src="{{ asset('images/races/samo.png') }}" alt="photo d'un samoyède"
                 class="race-feature-img object-cover" />

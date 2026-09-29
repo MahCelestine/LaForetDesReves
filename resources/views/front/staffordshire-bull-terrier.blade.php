@@ -1,164 +1,167 @@
 <x-layout>
-    <section>
-        <a href="/nos-races">← Toutes nos races</a>
-        <h2>Standard FCI n°76</h2>
-        <h1>Staffordshire Bull Terrier</h1>
-        <h3>adjectif de la race</h3>
-    </section>
-    <section>
+    <section class="relative w-full min-h-[60vh] flex flex-col justify-end overflow-hidden">
         <div>
-            <p>12 - 14 ans</p>
-            <small>Espérance de vie</small>
+            <img src="{{ asset('images/races/staf.png') }}" alt="photo d'un Staffordshire Bull Terrier"
+                class="absolute inset-0 w-full h-full object-cover object-[center_15%]" />
         </div>
-        <div>
-            <p>33 - 41 cm</p>
-            <small>Taille adulte</small>
-        </div>
-        <div>
-            <p>10 - 16 kg</p>
-            <small>Poids adulte</small>
-        </div>
-        <div>
-            <p>N° 76</p>
-            <small>Standard FCI</small>
+        <div class="absolute inset-0 bg-dark-purple/65 backdrop-blur-[2.5px]"></div>
+        <div class="relative justify-end mb-8 max-md:px-4 md:px-5 xl:ml-40">
+            <a href="/nos-races" class="link-grey">← Toutes nos races</a>
+            <h2 class="race-sub-title-des">Standard FCI n°76</h2>
+            <h1 class="race-title-des">Staffordshire Bull Terrier</h1>
+            <h3 class="race-descript-title-des">adjectif de la race</h3>
         </div>
     </section>
-    <span></span>
-    <section>
-        <div>
-            <div>
-                <small>La race</small>
-                <h2>Description</h2>
-                <a>Tout a commencé en 2008 dans les sous-bois de Fontainebleau, quand Sophie et Julien Moreau ont
-                    accueilli leur premier Berger Blanc Suisse, Elios. Ce qui n'était au départ qu'un coup de cœur est
-                    devenu, au fil des années, une vocation profonde et une discipline exigeant </br>
-                    Tout a commencé en 2008 dans les sous-bois de Fontainebleau, quand Sophie et Julien Moreau ont
-                    accueilli leur premier Berger Blanc Suisse, Elios. Ce qui n'était au départ qu'un coup de cœur est
-                    devenu, au fil des années, une vocation profonde et une discipline exigeantTout a commencé en 2008
-                    dans les sous-bois de Fontainebleau, </p>
+    <section class="flex xl:mx-40 justify-around max-md:my-2 md:my-4">
+        <div class="text-center">
+            <p class="text-purple font-title md:text-2xl lg:text-3xl font-bold max-md:mb-0! md:mb-2">12 - 14 ans</p>
+            <small class="text-dark-purple tracking-widest esperance-detail">Espérance de vie</small>
+        </div>
+        <div class="text-center">
+            <p class="text-purple font-title md:text-2xl lg:text-3xl font-bold max-md:mb-0! md:mb-2">33 - 41 cm</p>
+            <small class="text-dark-purple tracking-widest esperance-detail">Taille adulte</small>
+        </div>
+        <div class="text-center">
+            <p class="text-purple font-title md:text-2xl lg:text-3xl font-bold max-md:mb-0! md:mb-2">10 - 16 kg</p>
+            <small class="text-dark-purple tracking-widest esperance-detail">Poids adulte</small>
+        </div>
+    </section>
+    <div class="max-md:px-4 md:px-5 lg:px-40">
+        <span class="separator bg-light-grey"></span>
+    </div>
+    <section class="max-md:px-4 md:px-5 race-detail-section">
+        <div class="race-detail-text">
+            <div class="md:my-5 max-md:my-3">
+                <small class="sub-title">La race</small>
+                <h2 class="title">Description</h2>
+                <p class="text-detail-race text-dark-purple text-lg">Tout a commencé en 2008 dans les sous-bois de Fontainebleau, quand Sophie et Julien Moreau ont accueilli leur premier Berger Blanc Suisse, Elios. Ce qui n'était au départ qu'un coup de cœur est devenu, au fil des années, une vocation profonde et une discipline exigeant </br> Tout a commencé en 2008 dans les sous-bois de Fontainebleau, quand Sophie et Julien Moreau ont accueilli leur premier Berger Blanc Suisse, Elios. Ce qui n'était au départ qu'un coup de cœur est devenu, au fil des années, une vocation profonde et une discipline exigeantTout a commencé en 2008 dans les sous-bois de Fontainebleau, </p>
             </div>
-            <div>
-                <small>Tempérament</small>
-                <h2>Comportement</h2>
-                <a>Tout a commencé en 2008 dans les sous-bois de Fontainebleau, quand Sophie et Julien Moreau ont
-                    accueilli leur premier Berger Blanc Suisse, Elios. Ce qui n'était au départ qu'un coup de cœur est
-                    devenu, au fil des années, une vocation profonde et une discipline exigeant </br>
-                    Tout a commencé en 2008 dans les sous-bois de Fontainebleau, quand Sophie et Julien Moreau ont
-                    accueilli leur premier Berger Blanc Suisse, Elios. Ce qui n'était au départ qu'un coup de cœur est
-                    devenu, au fil des années, une vocation profonde et une discipline exigeantTout a commencé en 2008
-                    dans les sous-bois de Fontainebleau, </p>
+            <div class="md:mb-5">
+                <small class="sub-title">Tempérament</small>
+                <h2 class="title">Comportement</h2>
+                <p class="text-detail-race text-dark-purple text-lg">Tout a commencé en 2008 dans les sous-bois de Fontainebleau, quand Sophie et Julien Moreau ont accueilli leur premier Berger Blanc Suisse, Elios. Ce qui n'était au départ qu'un coup de cœur est devenu, au fil des années, une vocation profonde et une discipline exigeant </br> Tout a commencé en 2008 dans les sous-bois de Fontainebleau, quand Sophie et Julien Moreau ont accueilli leur premier Berger Blanc Suisse, Elios. Ce qui n'était au départ qu'un coup de cœur est devenu, au fil des années, une vocation profonde et une discipline exigeantTout a commencé en 2008 dans les sous-bois de Fontainebleau, </p>
             </div>
         </div>
-        <div>
-            <table>
+        <div class="race-detail-table-col flex justify-center">
+            <table class="temperament-table">
                 <thead>
                     <tr>
-                        <td>Profil du Tempérament</td>
+                        <td colspan="2">Profil du Tempérament</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="flex">
                         <td>Calme</td>
-                        <td aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <td class="dots">
+                            <span class="sr-only">4 sur 5</span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Facilité d'éducation</td>
-                        <td aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <td class="dots">
+                            <span class="sr-only">4 sur 5</span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Affectueux</td>
-                        <td aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <td class="dots">
+                            <span class="sr-only">4 sur 5</span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Indépendant</td>
-                        <td aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <td class="dots">
+                            <span class="sr-only">4 sur 5</span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Aboie / Hurle</td>
-                        <td aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <td class="dots">
+                            <span class="sr-only">4 sur 5</span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Chasseur</td>
-                        <td aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <td class="dots">
+                            <span class="sr-only">4 sur 5</span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Protecteur</td>
-                        <td aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <td class="dots">
+                            <span class="sr-only">4 sur 5</span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Tolérance enfant</td>
-                        <td aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <td class="dots">
+                            <span class="sr-only">4 sur 5</span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot"></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Entente avec les animaux</td>
-                        <td aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <td class="dots">
+                            <span class="sr-only">4 sur 5</span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot filled"></span>
+                            <span aria-hidden="true" class="dot"></span>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
-    <section>
-        <small>Compatibilité</small>
-        <h2>Pour quelle famille ?</h2>
-        <div>
-            <table>
+    <section class="max-md:px-4 md:px-5 race-detail-section-2">
+        <small class="sub-title">Compatibilité</small>
+        <h2 class="title">Pour quelle famille ?</h2>
+
+        <div class="compat-tables my-5">
+            <table class="compat-table compat-table--yes">
                 <thead>
                     <tr>
-                        <td><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Convient bien à :</td>
+                        <td><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Convient bien à :</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -179,10 +182,11 @@
                     </tr>
                 </tbody>
             </table>
-            <table>
+
+            <table class="compat-table compat-table--no">
                 <thead>
                     <tr>
-                        <td><i class="bi bi-x-circle-fill" aria-hidden="true"></i>Moins adapté à :</td>
+                        <td><i class="bi bi-x-circle-fill" aria-hidden="true"></i> Moins adapté à :</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -199,48 +203,49 @@
             </table>
         </div>
     </section>
-    <section>
-        <div>
+    <section class="max-md:px-4 md:px-5 race-detail-section-2">
+        <div class="lg:my-5 max-lg:my-3  flex justify-between items-center">
             <div>
-                <small>Reproducteur</small>
-                <h2>Parents</h2>
+                <small class="sub-title">Reproducteur</small>
+                <h2 class="title">Parents</h2>
             </div>
-            <a href="{{ route('front.breeds.dogs', $breed->slug) }}">Voir plus →</a>
+            <a href="{{ route('front.breeds.dogs', $breed->slug) }}" class="link-purple">Voir plus →</a>
         </div>
-        <div>
+        <div class="dogs-grid">
             @foreach ($randomDogs as $dog)
-                <div>
-                    <img src="{{ asset('storage/' . $dog->image_path) }}" alt="photo de {{ $dog->common_name }}" />
-                    <div>
-                        <p>{{ $dog->common_name }}</p>
-                        <small>{{ $dog->sex === 'male' ? 'Mâle' : 'Femelle' }}</small>
+                <div class="dog-card">
+                    <img src="{{ asset('storage/' . $dog->image_path) }}" alt="photo de {{ $dog->common_name }}"
+                        class="dog-card-img" />
+                    <div class="dog-card-body">
+                        <p class="dog-card-name">{{ $dog->common_name }}</p>
+                        <small class="dog-card-sex">{{ $dog->sex === 'male' ? 'Mâle' : 'Femelle' }}</small>
                     </div>
-                    <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $dog->slug]) }}">Voir
-                        plus →</a>
+                    <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $dog->slug]) }}"
+                        class="link-purple-card">Plus de détail→</a>
                 </div>
             @endforeach
         </div>
     </section>
-    <section>
-        <div>
+    <section class="max-md:px-4 md:px-5 race-detail-section-2">
+        <div class="lg:my-5 flex justify-between items-center">
             <div>
-                <small>Portée</small>
-                <h2>Chiots</h2>
+                <small class="sub-title">Portée</small>
+                <h2 class="title">Chiots</h2>
             </div>
-            <a href="{{ route('front.breeds.puppies', $breed->slug) }}">Voir plus →</a>
+            <a href="{{ route('front.breeds.puppies', $breed->slug) }}" class="link-purple">Voir plus →</a>
         </div>
-        <div>
+        <div class="dogs-grid">
             @foreach ($randomPuppies as $puppy)
-                <div>
-                    <img src="{{ asset('storage/' . $puppy->image_path) }}" alt="photo de {{ $puppy->common_name }}" />
-                    <div>
-                        <p>{{ $puppy->name }}</p>
-                        <small>{{ $puppy->sex === 'male' ? 'Mâle' : 'Femelle' }}</small>
-                        <small>{{ $puppy->birth_date->format('d/m/Y') }}</small>
+                <div class="dog-card">
+                    <img src="{{ asset('storage/' . $puppy->image_path) }}" alt="photo du chiot {{ $puppy->name }}" class="puppy-card-img" />
+                    <div class="dog-card-body">
+                        <p class="dog-card-name">{{ $puppy->name }}</p>
+                        <small class="dog-card-sex">{{ $puppy->sex === 'male' ? 'Mâle' : 'Femelle' }}</small>
+                        <small class="dog-card-birth">{{ $puppy->birth_date->format('d/m/Y') }}</small>
                     </div>
                     <a
-                        href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $puppy->slug]) }}">Voir
-                        plus →</a>
+                        href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $puppy->slug]) }}"
+                        class="link-purple-card">Plus de détail →</a>
                 </div>
             @endforeach
         </div>

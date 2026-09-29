@@ -256,6 +256,57 @@ footer h5 {
     font-size: clamp(0.60rem, 0.9vw, 0.80rem);
 }
 
+.race-sub-title-des {
+    color: var(--color-purple);
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+    font-size: clamp(0.80rem, 1.1vw, 1.25rem);
+}
+
+.race-title-des {
+    color: white;
+    font-family: var(--font-title);
+    font-size: clamp(3rem, 5vw, 6rem);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: -0.5rem;
+    line-height: 1.15;
+}
+
+.race-descript-title-des {
+    color: var(--color-light-grey);
+    letter-spacing: 0.1rem;
+    font-size: 1rem;
+    font-size: clamp(0.75rem, 1.1vw, 1rem);
+}
+
+.link-grey {
+    font-size: clamp(0.7rem, 1.2vw, 1.1rem);
+    color: #C2B8F0;
+    letter-spacing: 0.10em;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.link-grey:hover {
+    color: #FFFFFF;
+    transform: translateY(3px);
+}
+
+.link-purple {
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+    color: var(--color-purple);
+    letter-spacing: 0.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.link-purple:hover {
+    color: var(--color-dark-purple);
+    transform: translateY(3px);
+}
+
+
 /* ============ BASE = TÉLÉPHONE ============ */
 .race-feature {
     display: flex;
@@ -951,5 +1002,383 @@ footer h5 {
     /* avant : -1.5rem */
     .engagement-card:nth-child(4) {
         margin-top: 2.5rem;
+    }
+}
+
+.esperance-detail {
+    font-size: clamp(0.80rem, 0.8vw, 1.1rem);
+}
+
+.temperament-table {
+    width: 100%;
+    max-width: clamp(18rem, 90vw, 28rem);
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: white;
+    color: var(--color-purple);
+}
+
+.temperament-table thead {
+    border: 1px solid var(--color-table-purple, #e4dffb);
+}
+
+.temperament-table thead td {
+    background: var(--color-table-purple, #ece8fb);
+    padding: clamp(0.75rem, 2vw, 1.1rem) clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    font-family: var(--font-title);
+    font-weight: 600;
+}
+
+.temperament-table tbody {
+    border: 1px solid var(--color-border-grey);
+    border-top: none;
+}
+
+.temperament-table tbody tr {
+    border-bottom: 1px solid var(--color-border-grey);
+}
+
+.temperament-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.temperament-table tbody td {
+    padding: clamp(0.6rem, 1.6vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+    white-space: nowrap;
+}
+
+/* La colonne des points s'aligne à droite et prend le reste de la largeur */
+.temperament-table .dots {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: clamp(0.25rem, 0.6vw, 0.4rem);
+}
+
+.dot {
+    width: clamp(0.45rem, 1.1vw, 0.65rem);
+    height: clamp(0.45rem, 1.1vw, 0.65rem);
+    border-radius: 9999px;
+    background: #dcd9ea;
+    /* point vide */
+    flex-shrink: 0;
+}
+
+.dot.filled {
+    background: var(--color-purple);
+    /* point rempli */
+}
+
+.temperament-table thead tr {
+    border: 1px solid var(--color-table-purple, #e4dffb);
+}
+
+.temperament-table tbody tr:first-child td {
+    border-top: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.temperament-table tbody tr td:first-child {
+    border-left: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.temperament-table tbody tr td:last-child {
+    border-right: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.temperament-table tbody tr:last-child td {
+    border-bottom: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+/* ============ BASE = TÉLÉPHONE / TABLETTE (< 1440px) ============ */
+.race-detail-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.race-detail-section-2 {
+    margin-bottom: 2rem;
+}
+
+.race-detail-text {
+    width: 100%;
+}
+
+.race-detail-table-col {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.temperament-table {
+    margin-top: 0;
+}
+
+@media (min-width: 640px) and (max-width: 1439px) {
+
+    .race-detail-table-col {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+
+    .race-detail-text {
+        columns: 2;
+        column-gap: 2rem;
+    }
+
+    .race-detail-text .mb-5 {
+        break-before: column;
+        margin-top: 3rem;
+    }
+
+
+    .temperament-table {
+        max-width: 40rem;
+        /* plus large que le 28rem par défaut */
+    }
+}
+
+/* ============ DESKTOP (≥ 1440px) ============ */
+@media (min-width: 1440px) {
+
+    .race-detail-section {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+
+    .race-detail-section-2 {
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+
+    .race-detail-text {
+        width: 60%;
+        columns: 1;
+        /* annule les 2 colonnes de la tablette */
+        order: 1;
+        margin-bottom: 0;
+    }
+
+    .race-detail-table-col {
+        width: 40%;
+        order: 2;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+/* ============ BASE = TÉLÉPHONE : tableaux empilés ============ */
+.compat-tables {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.compat-table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate !important;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: white;
+}
+
+.compat-table thead {
+    border: 1px solid var(--color-table-purple, #e4dffb);
+}
+
+.compat-table thead td {
+    background: var(--color-table-purple, #ece8fb);
+    color: var(--color-purple);
+    font-weight: 600;
+    font-family: var(--font-title);
+    padding: clamp(0.75rem, 2vw, 1.1rem) clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+}
+
+.compat-table thead td i {
+    margin-right: 0.5rem;
+}
+
+.compat-table tbody tr:first-child td {
+    border-top: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.compat-table tbody tr td:first-child {
+    border-left: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.compat-table tbody tr td:last-child {
+    border-right: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.compat-table tbody tr:last-child td {
+    border-bottom: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.compat-table tbody tr {
+    border-bottom: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.compat-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.compat-table tbody tr:not(:last-child) td::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    /* entre 90 et 95%, ajustable */
+    height: 1px;
+    background: var(--color-border-grey, #e5e5e5);
+}
+
+.compat-table tbody td {
+    position: relative;
+    padding: clamp(0.6rem, 1.6vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+    color: var(--color-purple);
+}
+
+.compat-table--yes,
+.compact-table--no {
+    color: var(--color-purple);
+}
+
+
+/* ============ TABLETTE ET PLUS : côte à côte ============ */
+@media (min-width: 768px) {
+    .compat-tables {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .compat-table {
+        width: 50%;
+    }
+}
+
+.dogs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    /* marge entre les cartes */
+}
+
+.dog-card {
+    width: calc((100% - 2 * 1.5rem) / 3);
+    /* 1/3 de la largeur, en tenant compte des 2 gaps entre 3 cartes */
+    display: flex;
+    border: 1px solid var(--color-border-grey, #e5e5e5);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: white;
+    position: relative;
+}
+
+.dog-card-img {
+    width: 20%;
+    margin: 0.5rem;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.puppy-card-img {
+    width: 23%;
+    margin: 0.5rem;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.dog-card-body {
+    padding: 1rem;
+    flex: 1;
+}
+
+.dog-card-name {
+    font-weight: 600;
+    color: var(--color-dark-purple);
+    margin: 0;
+    font-size: clamp(1.4rem, 1.30vw, 1.60rem);
+    font-family: var(--font-title);
+}
+
+.dog-card-sex {
+    color: var(--color-purple);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    letter-spacing: 0.05rem;
+}
+
+.link-purple-card {
+    position: absolute;
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    color: var(--color-purple);
+    bottom: 1rem;
+    right: 1rem;
+    letter-spacing: 0.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.link-purple-card:hover {
+    color: var(--color-dark-purple);
+    transform: translateY(3px);
+}
+
+.dog-card-birth {
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    letter-spacing: 0.05rem;
+    color: var(--color-grey);
+    display: block;
+}
+
+@media (max-width: 1023px) {
+    .dog-card {
+        /* Passe les cartes à 2 par ligne (changez à 100% si vous n'en voulez qu'une seule) */
+        width: calc((100% - 1.5rem) / 2);
+        flex-direction: column;
+        /* Aligne l'image et le texte en colonne */
+    }
+
+    .dog-card-img {
+        width: calc(100% - 1rem);
+        /* L'image prend toute la largeur de la carte (avec les marges) */
+        height: 180px;
+        /* Vous pouvez fixer une hauteur propre pour l'image en mode colonne */
+        aspect-ratio: auto;
+    }
+
+        .puppy-card-img {
+        width: calc(100% - 1rem);
+        /* L'image prend toute la largeur de la carte (avec les marges) */
+        height: 180px;
+        /* Vous pouvez fixer une hauteur propre pour l'image en mode colonne */
+        aspect-ratio: auto;
+    }
+
+
+    .dog-card:nth-child(n+3) {
+        display: none;
+    }
+
+    .dog-card-body {
+        padding-bottom: 0.5rem;
+    }
+
+    .link-purple-card {
+        position: static;
+        /* Retire le positionnement absolute qui pose problème */
+        align-self: flex-end;
+        /* Aligne le lien à droite de la carte */
+        margin-right: 1rem;
+        margin-bottom: 1rem;
     }
 }
