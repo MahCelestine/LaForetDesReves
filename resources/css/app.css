@@ -1027,7 +1027,7 @@ footer h5 {
 .temperament-table thead td {
     background: var(--color-table-purple, #ece8fb);
     padding: clamp(0.75rem, 2vw, 1.1rem) clamp(1rem, 3vw, 1.5rem);
-    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    font-size: clamp(0.90rem, 1.3vw, 1rem);
     font-family: var(--font-title);
     font-weight: 600;
 }
@@ -1047,7 +1047,7 @@ footer h5 {
 
 .temperament-table tbody td {
     padding: clamp(0.6rem, 1.6vw, 1rem) clamp(1rem, 3vw, 1.5rem);
-    font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
     white-space: nowrap;
 }
 
@@ -1589,13 +1589,15 @@ footer h5 {
 
 .litter-parent-link {
     color: var(--color-purple);
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
+    font-size: clamp(0.75rem, 1.3vw, 0.95rem);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    letter-spacing: 0.05rem;
 }
 
 .litter-parent-link:hover {
-    text-decoration: underline;
+    color: var(--color-dark-purple);
+    transform: translateY(3px);
 }
 
 /* Message si aucun chiot n'est présent */
@@ -1680,20 +1682,19 @@ footer h5 {
     }
 
     .litter-parent-img {
-        width: 50px;
+        width: 60px;
         /* Image plus petite sur téléphone */
         height: 50px;
         margin-right: 0.5rem;
     }
 
     .litter-parent-name {
-        font-size: 0.9rem;
+        font-size: 01rem;
     }
 
     .litter-parent-meta,
-    .litter-parent-date,
-    .litter-parent-link {
-        font-size: 0.7rem;
+    .litter-parent-date {
+        font-size: 0.70rem;
     }
 
     .litter-separator-et {

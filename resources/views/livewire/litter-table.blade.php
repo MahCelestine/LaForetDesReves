@@ -18,7 +18,7 @@
                             <div class="litter-parent-footer">
                                 <span class="litter-parent-date">{{ $litter->dad->birth_date->format('Y') }}</span>
                                 <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $litter->dad->slug]) }}"
-                                    class="litter-parent-link">Voir le parent →</a>
+                                    class="litter-parent-link">Voir plus →</a>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             <div class="litter-parent-footer">
                                 <span class="litter-parent-date">{{ $litter->mom->birth_date->format('Y') }}</span>
                                 <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $litter->mom->slug]) }}"
-                                    class="litter-parent-link">Voir le parent →</a>
+                                    class="litter-parent-link">Voir plus →</a>
                             </div>
                         </div>
                     </div>
