@@ -1,10 +1,10 @@
 <x-layout>
-    <section>
+    <section class="md:px-5 max-md:px-2 xl:px-40">
         <div>
-            <div>
-                <h2>Contact</h2>
-                <h1>Échangeons ensemble</h1>
-                <h3>Remplissez ce formulaire afin que nous puissions mieux comprendre votre projet et vous orienter vers
+            <div class="md:py-10 py-4">
+                <h2 class="sub-title">Contact</h2>
+                <h1 class="title">Échangeons ensemble</h1>
+                <h3 class="title-description">Remplissez ce formulaire afin que nous puissions mieux comprendre votre projet et vous orienter vers
                     le compagnon idéal pour votre mode de vie. </h3>
             </div>
             <div>

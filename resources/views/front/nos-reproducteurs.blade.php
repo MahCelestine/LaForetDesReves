@@ -1,10 +1,10 @@
 <x-layout>
-    <div>
-        <h2>Races</h2>
-        <h1>Nos reproducteurs</h1>
-        <h3>Découvrez l'ensemble de nos reproducteurs actifs et nos chiens retraités  </h3>
+    <div class="md:py-10 py-4 xl:px-40 md:px-5 max-md:px-2">
+        <h2 class="sub-title">Races</h2>
+        <h1 class="title">Nos reproducteurs</h1>
+        <h3 class="title-description">Découvrez l'ensemble de nos reproducteurs actifs et nos chiens retraités  </h3>
     </div>
-    <section>
+    <section class="md:px-5 max-md:px-2 xl:px-40">
         <livewire:filter-bar :options="[
         ['id' => 'male', 'label' => 'Nos mâles'],
         ['id' => 'female', 'label' => 'Nos femelles'],

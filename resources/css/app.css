@@ -1328,7 +1328,8 @@ footer h5 {
     display: inline-block;
 }
 
-.link-purple-card:hover {
+.link-purple-card:hover,
+.link-purple-card-list:hover {
     color: var(--color-dark-purple);
     transform: translateY(3px);
 }
@@ -1356,7 +1357,7 @@ footer h5 {
         aspect-ratio: auto;
     }
 
-        .puppy-card-img {
+    .puppy-card-img {
         width: calc(100% - 1rem);
         /* L'image prend toute la largeur de la carte (avec les marges) */
         height: 180px;
@@ -1380,5 +1381,339 @@ footer h5 {
         /* Aligne le lien à droite de la carte */
         margin-right: 1rem;
         margin-bottom: 1rem;
+    }
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 1.2vw, 0.75rem);
+}
+
+.filter-bar button {
+    display: inline-block;
+    border: 2px solid var(--color-purple);
+    border-radius: 9999px;
+    padding: clamp(0.3rem, 0.6vw, 0.4rem) clamp(0.7rem, 1.4vw, 0.9rem);
+    letter-spacing: 0.05rem;
+    font-size: clamp(0.75rem, 1vw, 0.85rem);
+    color: var(--color-purple);
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    white-space: nowrap;
+}
+
+.filter-bar button:hover {
+    background-color: var(--color-purple);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.filter-bar button.active {
+    background-color: var(--color-purple);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.reproducteurs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.reproducteur-card {
+    position: relative;
+    width: calc((100% - 3 * 1.5rem) / 4);
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 3px 4px 6px 1px #0000000F;
+}
+
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    .reproducteur-card {
+        width: calc((100% - (2 * 1.5rem)) / 3);
+    }
+}
+
+/* 3. Format Téléphones (en dessous de 768px) : 2 cartes par ligne (1 espace de 1.5rem) */
+@media screen and (max-width: 767px) {
+    .reproducteur-card {
+        width: calc((100% - (1 * 1.5rem)) / 2);
+    }
+}
+
+.reproducteur-card-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.reproducteur-card-body {
+    padding: 1rem;
+}
+
+.reproducteur-card-name {
+    color: var(--color-dark-purple);
+    font-family: var(--font-title);
+    font-size: clamp(1.1rem, 1.4vw, 1.6rem);
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+}
+
+.reproducteur-card-meta {
+    letter-spacing: 0.05rem;
+    color: var(--color-grey);
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    margin: 0;
+}
+
+.reproducteur-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.reproducteur-card-litters {
+    color: var(--color-purple);
+    font-size: clamp(0.8rem, 1vw, 1.1rem);
+    margin: 0;
+}
+
+.link-purple-card-list {
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    color: var(--color-purple);
+    bottom: 1rem;
+    right: 1rem;
+    letter-spacing: 0.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.price-card {
+    color: var(--color-purple);
+    letter-spacing: 0.1rem;
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    font-weight: 700;
+}
+
+/* Conteneur de l'en-tête des parents */
+.litter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.litter-label,
+.litter-separator-et {
+    color: var(--color-purple);
+    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+}
+
+.litter-parents-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.litter-separator-et {
+    color: var(--color-purple);
+    letter-spacing: 0.05rem;
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+}
+
+/* Carte de parent (plus grande et élégante comme sur l'image) */
+.litter-parent-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    box-shadow: 3px 4px 6px 1px #0000000F;
+    border: 1px solid var(--color-light-grey, #e5e7eb);
+    flex: 1;
+    max-width: 100%;
+    max-height: 105px;
+}
+
+.litter-parent-img {
+    width: 80px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.litter-parent-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.litter-parent-name {
+    color: var(--color-dark-purple);
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.litter-parent-meta {
+    color: var(--color-purple);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.litter-parent-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.litter-parent-date {
+    color: var(--color-grey);
+    font-size: 0.8rem;
+}
+
+.litter-parent-link {
+    color: var(--color-purple);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.litter-parent-link:hover {
+    text-decoration: underline;
+}
+
+/* Message si aucun chiot n'est présent */
+.no-puppies-msg {
+    color: var(--color-grey);
+    text-align: center;
+    font-style: italic;
+    margin: 2rem 0;
+    font-size: 1rem;
+}
+
+/* Badge de statut pour les chiots */
+/* Style de base commun pour tous les badges de statut */
+.puppy-status-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid transparent;
+    /* Pour caler proprement la bordure */
+}
+
+/* 1. Statut DISPONIBLE (Vert) */
+.puppy-status-badge.available,
+.puppy-status-badge[data-status="disponible"] {
+    background-color: var(--color-light-green);
+    /* #ECFDF5 */
+    color: var(--color-dark-green);
+    /* #208C6B */
+    border-color: var(--color-dark-green);
+}
+
+/* 2. Statut RÉSERVÉ (Jaune) */
+.puppy-status-badge.reserved,
+.puppy-status-badge[data-status="reserve"] {
+    background-color: var(--color-light-yellow);
+    /* #FFFEE0 */
+    color: var(--color-dark-yellow);
+    /* #BFBF23 */
+    border-color: var(--color-dark-yellow);
+}
+
+/* 3. Statut VENDU (Gris) */
+.puppy-status-badge.sold,
+.puppy-status-badge[data-status="vendu"] {
+    background-color: var(--color-border-grey);
+    /* #E5E5E5 pour le background */
+    color: var(--color-light-grey);
+    /* #C8C8C8 pour le texte */
+    border-color: var(--color-light-grey);
+    /* #C8C8C8 pour la bordure */
+}
+
+/* --- Version Téléphone (écrans de moins de 768px) --- */
+@media (max-width: 768px) {
+
+    /* Masquer le texte "Chiots de" sur mobile */
+    .hide-on-mobile {
+        display: none !important;
+    }
+
+    .litter-header {
+        margin: 1.5rem 0 1rem 0;
+    }
+
+    /* Le wrapper prend toute la largeur et garde les cartes ensemble */
+    .litter-parents-wrapper {
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    /* On réduit la taille des cartes et des textes pour qu'elles tiennent bien */
+    .litter-parent-card {
+        padding: 0.4rem 0.5rem;
+        min-width: 0;
+        /* Permet aux cartes de se réduire si nécessaire */
+        max-height: 80px;
+    }
+
+    .litter-parent-img {
+        width: 50px;
+        /* Image plus petite sur téléphone */
+        height: 50px;
+        margin-right: 0.5rem;
+    }
+
+    .litter-parent-name {
+        font-size: 0.9rem;
+    }
+
+    .litter-parent-meta,
+    .litter-parent-date,
+    .litter-parent-link {
+        font-size: 0.7rem;
+    }
+
+    .litter-separator-et {
+        font-size: 0.9rem;
+        padding: 0 0.2rem;
+    }
+
+    .litter-parent-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 1024px) {
+    .litter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 1.5rem;
+        flex-wrap: wrap;
     }
 }

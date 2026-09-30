@@ -1,11 +1,11 @@
 <x-layout>
-    <div>
-        <h2>Foire aux questions</h2>
-        <h1>Vos questions, nos réponses</h1>
-        <h3>Retrouvez ici les réponses aux questions les plus fréquentes de nos familles adoptantes. Nous restons
+    <div class="md:py-10 py-4 xl:px-40 md:px-5 max-md:px-2">
+        <h2 class="sub-title">Foire aux questions</h2>
+        <h1 class="title">Vos questions, nos réponses</h1>
+        <h3 class="title-description">Retrouvez ici les réponses aux questions les plus fréquentes de nos familles adoptantes. Nous restons
             disponible pour tout complément. </h3>
     </div>
-    <section>
+    <section class="md:px-5 max-md:px-2 xl:px-40">
         <table>
             <thead>
                 <tr>
@@ -52,7 +52,7 @@
             </tbody>
         </table>
     </section>
-    <section>
+    <section class="md:px-5 max-md:px-2 xl:px-40">
         <table>
             <thead>
                 <tr>
@@ -99,7 +99,7 @@
             </tbody>
         </table>
     </section>
-    <section>
+    <section class="md:px-5 max-md:px-2 xl:px-40">
         <table>
             <thead>
                 <tr>
