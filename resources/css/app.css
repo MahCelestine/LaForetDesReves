@@ -2355,3 +2355,79 @@ footer h5 {
         flex: 1;
     }
 }
+
+.legal-section {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding-top: clamp(2rem, 4vw, 3.5rem);
+    padding-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.legal-header {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.legal-block-title {
+    color: var(--color-purple);
+    font-family: var(--font-title);
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.legal-block p {
+    color: var(--color-dark-purple);
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    line-height: 1.7;
+    margin-bottom: 0.9rem;
+}
+.legal-block p:last-child {
+    margin-bottom: 0;
+}
+
+.legal-block ul {
+    list-style: none;
+    margin: 0 0 0.9rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.legal-block li {
+    position: relative;
+    padding-left: 1.3rem;
+    color: var(--color-dark-purple);
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    line-height: 1.6;
+}
+.legal-block li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 9999px;
+    background: var(--color-purple);
+}
+
+.legal-block li strong,
+.legal-block p strong {
+    color: var(--color-purple);
+}
+
+.legal-block a {
+    color: var(--color-purple);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+.legal-block a:hover {
+    color: var(--color-dark-purple);
+}
