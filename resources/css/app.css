@@ -1678,7 +1678,7 @@ footer h5 {
         width: 85%;
     }
 
-        .litter-parent-name {
+    .litter-parent-name {
         font-size: 0.80rem;
     }
 
@@ -1692,7 +1692,7 @@ footer h5 {
         padding: 0 0.2rem;
     }
 
-        .hide-on-mobile {
+    .hide-on-mobile {
         display: none !important;
     }
 
@@ -1700,7 +1700,7 @@ footer h5 {
 }
 
 /* --- Version Téléphone (écrans de moins de 768px) --- */
-@media screen and (max-width: 426px) and (min-width: 768px){
+@media screen and (max-width: 426px) and (min-width: 768px) {
 
     /* Masquer le texte "Chiots de" sur mobile */
     .hide-on-mobile {
@@ -1857,6 +1857,7 @@ footer h5 {
 .faq-item {
     border-bottom: 1px solid var(--color-border-grey, #e5e5e5);
 }
+
 .faq-item--last {
     border-bottom: none;
 }
@@ -1882,6 +1883,7 @@ footer h5 {
     font-size: 1.3rem;
     transition: transform 300ms ease;
 }
+
 .faq-arrow-open {
     transform: rotate(180deg);
 }
@@ -1889,6 +1891,7 @@ footer h5 {
 .faq-answer {
     padding: 0 clamp(1.1rem, 2vw, 1.5rem) clamp(1.1rem, 2vw, 1.4rem);
 }
+
 .faq-answer p {
     color: var(--color-dark-purple);
     font-size: clamp(0.95rem, 1.2vw, 1.05rem);
@@ -1899,10 +1902,12 @@ footer h5 {
 .faq-answer-enter {
     transition: opacity 300ms ease, transform 300ms ease;
 }
+
 .faq-answer-enter-start {
     opacity: 0;
     transform: translateY(-6px);
 }
+
 .faq-answer-enter-end {
     opacity: 1;
     transform: translateY(0);
@@ -1911,9 +1916,162 @@ footer h5 {
 .faq-answer-leave {
     transition: opacity 200ms ease;
 }
+
 .faq-answer-leave-start {
     opacity: 1;
 }
+
 .faq-answer-leave-end {
     opacity: 0;
+}
+
+.contents-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.content-card {
+    width: calc((100% - 3 * 1.5rem) / 4);
+    /* 4 cartes par ligne, 3 espaces entre elles */
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 3px 4px 6px 1px #0000000F;
+}
+
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    .content-card {
+        width: calc((100% - (2 * 1.5rem)) / 3);
+        /* 3 cartes par ligne */
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .content-card {
+        width: calc((100% - (1 * 1.5rem)) / 2);
+        /* 2 cartes par ligne */
+    }
+}
+
+@media (min-width: 640px) {
+    .content-card-footer {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .content-card-date {
+        align-self: auto;
+    }
+}
+
+.content-card-media {
+    position: relative;
+}
+
+.content-card-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.content-card-tiktok {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(0, 0, 0, 0.55);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 9999px;
+}
+
+.content-card-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-purple);
+    color: #ffffff;
+    border-radius: 9999px;
+    font-size: 1.3rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.content-card-play:hover {
+    background: var(--color-dark-purple);
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+.content-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.content-card-title {
+    color: var(--color-dark-purple);
+    font-family: var(--font-title);
+    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 0.5rem;
+}
+
+.content-card-extract {
+    color: var(--color-grey);
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.content-card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.content-card-date {
+    width: 100%;
+    color: var(--color-purple);
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
+    margin-bottom: 0.4rem;
+}
+
+.content-card-footer .link-purple-card-list {
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/* ============ TABLETTE ET PLUS : date et lien sur la même ligne ============ */
+@media (min-width: 768px) {
+    .content-card-footer {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .content-card-date {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .content-card-footer .link-purple-card-list {
+        margin-left: 0;
+    }
 }
