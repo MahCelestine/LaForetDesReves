@@ -1,129 +1,169 @@
 <x-layout>
-    <section>
-        <a href="{{ route('front.breeds.puppies', $breed->slug) }}">← Toutes nos chiots</a>
-        <h1>{{ $puppy->name }}</h1>
-    </section>
-    <section>
+    <section class="relative w-full min-h-[60vh] flex flex-col justify-end overflow-hidden">
         <div>
-            <p>{{ $puppy->birth_date->format('d/m/Y') }}</p>
-            <small>date de naissance</small>
+            <img src="{{ asset('storage/' . $puppy->image_path) }}" alt="photo d'un samoyède"
+                class="absolute inset-0 w-full h-full object-cover object-[center_15%]" />
         </div>
-        <div>
-            <p>{{ $puppy->color }}</p>
-            <small>Couleur</small>
-        </div>
-        <div>
-            <p>{{ $puppy->birth_weight }}g</p>
-            <small>Poids à la naissance</small>
+        <div class="absolute inset-0 bg-dark-purple/65 backdrop-blur-[2.5px]"></div>
+        <div class="relative justify-end mb-8 max-md:px-4 md:px-5 xl:ml-40">
+            <a href="{{ route('front.breeds.puppies', $breed->slug) }}" class="link-grey">← Toutes nos chiots</a>
+            <h1 class="race-title-des">{{ $puppy->name }}</h1>
         </div>
     </section>
-    <span></span>
-    <section>
-        <div>
-            <small>Le chiots</small>
-            <h2>A propos</h2>
-            <p>{{ $puppy->description }}</p>
+    <section class="flex xl:mx-40 justify-around max-md:my-2 md:my-4">
+        <div class="text-center">
+            <p class="text-purple font-title md:text-2xl lg:text-3xl font-bold max-md:mb-0! md:mb-2">
+                {{ $puppy->birth_date->format('d/m/Y') }}
+            </p>
+            <small class="text-dark-purple tracking-widest esperance-detail">date de naissance</small>
         </div>
-        <div>
-            <table>
+        <div class="text-center">
+            <p class="text-purple font-title md:text-2xl lg:text-3xl font-bold max-md:mb-0! md:mb-2">{{ $puppy->color }}
+            </p>
+            <small class="text-dark-purple tracking-widest esperance-detail">Couleur</small>
+        </div>
+        <div class="text-center">
+            <p class="text-purple font-title md:text-2xl lg:text-3xl font-bold max-md:mb-0! md:mb-2">
+                {{ $puppy->birth_weight }}g
+            </p>
+            <small class="text-dark-purple tracking-widest esperance-detail">Poids à la naissance</small>
+        </div>
+    </section>
+    <div class="max-md:px-4 md:px-5 lg:px-40">
+        <span class="separator bg-light-grey"></span>
+    </div>
+    <section class="max-md:px-4 md:px-5 dog-detail-section">
+        <div class="md:my-5 max-md:my-3 w-[100%] xl:w-[60%]">
+            <small class="sub-title">Le chiots</small>
+            <h2 class="title">A propos</h2>
+            <p class="text-detail-race text-dark-purple text-lg">{{ $puppy->description }}</p>
+        </div>
+        <div class="race-detail-table-col flex justify-center puppy-info-block">
+            <table class="temperament-table">
                 <thead>
                     <tr>
-                        <td>Informations</td>
+                        <td colspan="2">Informations</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="flex">
                         <td>Sexe</td>
-                        <td>{{ $puppy->sex == 'male' ? 'Mâle' : 'Femelle' }}</td>
+                        <td class="value">{{ $puppy->sex == 'male' ? 'Mâle' : 'Femelle' }}</td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Numéro d'identification</td>
-                        <td>{{ $puppy->identification_number }}</td>
+                        <td class="value">{{ $puppy->identification_number }}</td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Statut</td>
-                        <td>{{ $puppy->status }}</td>
+                        <td class="value">{{ $puppy->status }}</td>
                     </tr>
-                    <tr>
+                    <tr class="flex">
                         <td>Date de disponibilité</td>
-                        <td>{{ $puppy->adoption_date->format('d/m/Y') }}</td>
+                        <td class="value">{{ $puppy->adoption_date->format('d/m/Y') }}</td>
                     </tr>
                 </tbody>
             </table>
-            <div>
-                <h5>{{ $puppy->price }} €</h5>
-                <a href="/nous-contacter">Déposer son dossier →</a>
+            <div class="puppy-price-block">
+                <h5 class="puppy-price">{{ $puppy->price }} €</h5>
+                <a href="/nous-contacter" class="btn-purple-normal">Déposer son dossier →</a>
             </div>
         </div>
     </section>
-    <section>
-        <h2>Parents</h2>
-        <div>
-            <p>Chiots de</p>
-            @php
-                $mom = $puppy->litter->mom;
-                $dad = $puppy->litter->dad;
-            @endphp
-            <div>
-                <img src="{{ asset('storage/' . $dad->image_path) }}" alt="photo de {{ $dad->name_affix }}">
-                <div>
-                    <h4>{{ $dad->name_affix }}
-                        @if ($dad->is_external)
-                            - Externe à l'élevage
-                        @endif
-                    </h4>
-                    <p>{{ $dad->sex == 'male' ? 'Mâle' : 'Femelle' }}</p>
-                    <div>
-                        <small>{{ $dad->birth_date->format('d/m/Y') }}</small>
-                        <a
-                            href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $dad->slug]) }}">Voir
-                            le parent →</a>
+    <section class="max-md:px-4 md:px-5 dog-detail-section-parents">
+        <h2 class="title">Parents</h2>
+
+        @php
+            $mom = $puppy->litter->mom;
+            $dad = $puppy->litter->dad;
+        @endphp
+
+        <div class="litter-group">
+            <div class="litter-header">
+                <span class="litter-label hide-on-mobile">Chiots de</span>
+                <div class="litter-parents-wrapper">
+                    <div class="litter-parent-card">
+                        <img src="{{ asset('storage/' . $dad->image_path) }}" alt="photo de {{ $dad->name_affix }}"
+                            class="litter-parent-img">
+
+                        <div class="litter-parent-body">
+                            <h4 class="litter-parent-name">{{ $dad->name_affix }}
+                                @if ($dad->is_external)
+                                    - Externe à l'élevage
+                                @endif
+                            </h4>
+                            <p class="litter-parent-meta">{{ $dad->sex == 'male' ? 'Mâle' : 'Femelle' }}</p>
+
+                            <div class="litter-parent-footer">
+                                <span class="litter-parent-date">{{ $dad->birth_date->format('d/m/Y') }}</span>
+                                <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $dad->slug]) }}"
+                                    class="litter-parent-link">Voir le parent →</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <p>et</p>
-            <div>
-                <img src="{{ asset('storage/' . $mom->image_path) }}" alt="photo de {{ $mom->name_affix }}">
-                <div>
-                    <h4>{{ $mom->name_affix }}
-                        @if ($mom->is_external)
-                            - Externe à l'élevage
-                        @endif
-                    </h4>
-                    <p>{{ $mom->sex == 'male' ? 'Mâle' : 'Femelle' }}</p>
-                    <div>
-                        <small>{{ $mom->birth_date->format('d/m/Y') }}</small>
-                        <a
-                            href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $mom->slug]) }}">Voir
-                            le parent →</a>
+                    <span class="litter-separator-et">et</span>
+                    <div class="litter-parent-card">
+                        <img src="{{ asset('storage/' . $mom->image_path) }}" alt="photo de {{ $mom->name_affix }}"
+                            class="litter-parent-img">
+
+                        <div class="litter-parent-body">
+                            <h4 class="litter-parent-name">{{ $mom->name_affix }}
+                                @if ($mom->is_external)
+                                    - Externe à l'élevage
+                                @endif
+                            </h4>
+                            <p class="litter-parent-meta">{{ $mom->sex == 'male' ? 'Mâle' : 'Femelle' }}</p>
+
+                            <div class="litter-parent-footer">
+                                <span class="litter-parent-date">{{ $mom->birth_date->format('d/m/Y') }}</span>
+                                <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $mom->slug]) }}"
+                                    class="litter-parent-link">Voir le parent →</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div>
-            <h3>Autres chiots de la portée</h3>
-            <div>
+
+        <div class="siblings-group">
+            <h3 class="title">Autres chiots de la portée</h3>
+
+            <div class="reproducteurs-list my-4">
                 @foreach ($puppy->litter->puppies as $sibling)
                     @if ($sibling->id !== $puppy->id)
-                        <div>
-                            <div>
+                        <div class="reproducteur-card">
+                            <div class="relative">
                                 <img src="{{ asset('storage/' . $sibling->image_path) }}"
-                                    alt="photo du chiot {{ $sibling->name }}">
-                                <span>{{ $sibling->status }}</span>
+                                    alt="photo du chiot {{ $sibling->name }}" class="reproducteur-card-img">
+                                @if($sibling->status)
+                                    @php
+                                        $statusLower = strtolower($sibling->status);
+                                        $statusClass = 'available';
+                                        if (str_contains($statusLower, 'réservé') || str_contains($statusLower, 'reserve')) {
+                                            $statusClass = 'reserved';
+                                        } elseif (str_contains($statusLower, 'vendu')) {
+                                            $statusClass = 'sold';
+                                        }
+                                    @endphp
+                                    <span class="puppy-status-badge {{ $statusClass }}">{{ $sibling->status }}</span>
+                                @endif
                             </div>
-                            <div>
-                                <h4>{{ $sibling->name }}</h4>
+                            <div class="reproducteur-card-body">
                                 <div>
-                                    <div>
-                                        <p>{{ $sibling->sex == 'male' ? 'Mâle' : 'Femelle' }}</p>
-                                        <small>{{ $sibling->birth_date->format('d/m/Y') }}</small>
-                                    </div>
-                                    <p>{{ $sibling->price }} €</p>
+                                    <h4 class="reproducteur-card-name">{{ $sibling->name }}</h4>
+                                    <p class="reproducteur-card-litters">Né le {{ $sibling->birth_date->format('d/m/Y') }} ·
+                                        {{ $sibling->sex === 'male' ? 'Mâle' : 'Femelle' }}
+                                    </p>
+                                </div>
+                                <div class="reproducteur-card-footer">
+                                    <small class="reproducteur-card-meta">{{ $sibling->color }}</small>
+                                    <h5 class="price-card">{{ $sibling->price }} €</h5>
                                 </div>
                             </div>
-                            <a
-                                href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $sibling->slug]) }}">Voir
-                                plus →</a>
+                            <div class="p-3 pt-0">
+                                <a href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $sibling->slug]) }}"
+                                    class="link-purple-card-list">Voir plus →</a>
+                            </div>
                         </div>
                     @endif
                 @endforeach
@@ -132,44 +172,44 @@
     </section>
     @if (!empty($puppy->pictures) && count($puppy->pictures) > 0)
         <section class="py-6 w-full overflow-hidden" x-data="{
-            activeSlide: 0,
-            realTotal: {{ count($puppy->pictures) }},
-            timer: null,
-            isTransitioning: true,
-            startAutoPlay() {
-                this.timer = setInterval(() => {
-                    this.next();
-                }, 1500); // Vitesse : 1.5 seconde
-            },
-            stopAutoPlay() {
-                clearInterval(this.timer);
-            },
-            next() {
-                this.isTransitioning = true;
-                this.activeSlide++;
+                        activeSlide: 0,
+                        realTotal: {{ count($puppy->pictures) }},
+                        timer: null,
+                        isTransitioning: true,
+                        startAutoPlay() {
+                            this.timer = setInterval(() => {
+                                this.next();
+                            }, 1500); // Vitesse : 1.5 seconde
+                        },
+                        stopAutoPlay() {
+                            clearInterval(this.timer);
+                        },
+                        next() {
+                            this.isTransitioning = true;
+                            this.activeSlide++;
 
-                // Si on arrive à la fin de la première boucle d'images
-                if (this.activeSlide >= this.realTotal) {
-                    setTimeout(() => {
-                        this.isTransitioning = false;
-                        this.activeSlide = 0;
-                    }, 500);
-                }
-            },
-            prev() {
-                if (this.activeSlide === 0) {
-                    this.isTransitioning = false;
-                    this.activeSlide = this.realTotal;
-                    setTimeout(() => {
-                        this.isTransitioning = true;
-                        this.activeSlide = this.realTotal - 1;
-                    }, 50);
-                } else {
-                    this.isTransitioning = true;
-                    this.activeSlide--;
-                }
-            }
-        }" x-init="startAutoPlay()" @mouseenter="stopAutoPlay()" @mouseleave="startAutoPlay()">
+                            // Si on arrive à la fin de la première boucle d'images
+                            if (this.activeSlide >= this.realTotal) {
+                                setTimeout(() => {
+                                    this.isTransitioning = false;
+                                    this.activeSlide = 0;
+                                }, 500);
+                            }
+                        },
+                        prev() {
+                            if (this.activeSlide === 0) {
+                                this.isTransitioning = false;
+                                this.activeSlide = this.realTotal;
+                                setTimeout(() => {
+                                    this.isTransitioning = true;
+                                    this.activeSlide = this.realTotal - 1;
+                                }, 50);
+                            } else {
+                                this.isTransitioning = true;
+                                this.activeSlide--;
+                            }
+                        }
+                    }" x-init="startAutoPlay()" @mouseenter="stopAutoPlay()" @mouseleave="startAutoPlay()">
 
             <div class="relative w-full group">
                 <!-- Container des images -->
@@ -223,10 +263,10 @@
             <div class="flex justify-center items-center gap-2 mt-4">
                 @foreach ($puppy->pictures as $index => $picture)
                     <button @click="activeSlide = {{ $index }}" type="button" class="h-3 transition-all duration-300" :style="`
-                                    border-radius: 9999px;
-                                    width: ${(activeSlide % realTotal) === {{ $index }} ? '32px' : '12px'};
-                                    background-color: ${(activeSlide % realTotal) === {{ $index }} ? '#4F34C7' : '#D1D5DB'};
-                                `">
+                                                            border-radius: 9999px;
+                                                            width: ${(activeSlide % realTotal) === {{ $index }} ? '32px' : '12px'};
+                                                            background-color: ${(activeSlide % realTotal) === {{ $index }} ? '#4F34C7' : '#D1D5DB'};
+                                                        `">
                     </button>
                 @endforeach
             </div>

@@ -1129,9 +1129,9 @@ footer h5 {
         column-gap: 2rem;
     }
 
-    .race-detail-text .mb-5 {
+    .race-detail-text .md\:mb-5 {
         break-before: column;
-        margin-top: 3rem;
+        margin-top: 1rem;
     }
 
 
@@ -1547,7 +1547,7 @@ footer h5 {
 }
 
 .litter-parent-img {
-    width: 80px;
+    width: 70px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 0.75rem;
@@ -1565,14 +1565,14 @@ footer h5 {
 .litter-parent-name {
     color: var(--color-dark-purple);
     font-family: var(--font-title);
-    font-size: 1.15rem;
+    font-size: clamp(0.90rem, 1.3vw, 1.15rem);
     font-weight: 700;
     margin: 0;
 }
 
 .litter-parent-meta {
     color: var(--color-purple);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     margin: 0;
 }
 
@@ -1584,12 +1584,12 @@ footer h5 {
 
 .litter-parent-date {
     color: var(--color-grey);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .litter-parent-link {
     color: var(--color-purple);
-    font-size: clamp(0.75rem, 1.3vw, 0.95rem);
+    font-size: clamp(0.60rem, 1.3vw, 0.95rem);
     transition: color 0.3s ease, transform 0.3s ease;
     display: inline-block;
     letter-spacing: 0.05rem;
@@ -1655,8 +1655,52 @@ footer h5 {
     /* #C8C8C8 pour la bordure */
 }
 
+@media (max-width: 425px) {
+
+    .litter-parents-wrapper {
+        width: 100%;
+        gap: 0.5rem;
+        flex-direction: column;
+    }
+
+    .litter-parent-footer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .litter-parent-card {
+        padding: 0.4rem 0.5rem;
+        min-width: 0;
+        /* Permet aux cartes de se réduire si nécessaire */
+        max-height: 80px;
+        width: 85%;
+    }
+
+        .litter-parent-name {
+        font-size: 0.80rem;
+    }
+
+    .litter-parent-meta,
+    .litter-parent-date {
+        font-size: 0.60rem;
+    }
+
+    .litter-separator-et {
+        font-size: 0.7rem;
+        padding: 0 0.2rem;
+    }
+
+        .hide-on-mobile {
+        display: none !important;
+    }
+
+
+}
+
 /* --- Version Téléphone (écrans de moins de 768px) --- */
-@media (max-width: 768px) {
+@media screen and (max-width: 426px) and (min-width: 768px){
 
     /* Masquer le texte "Chiots de" sur mobile */
     .hide-on-mobile {
@@ -1689,16 +1733,16 @@ footer h5 {
     }
 
     .litter-parent-name {
-        font-size: 01rem;
+        font-size: 0.80rem;
     }
 
     .litter-parent-meta,
     .litter-parent-date {
-        font-size: 0.70rem;
+        font-size: 0.60rem;
     }
 
     .litter-separator-et {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
         padding: 0 0.2rem;
     }
 
@@ -1717,4 +1761,67 @@ footer h5 {
         gap: 1.5rem;
         flex-wrap: wrap;
     }
+}
+
+.dog-detail-section {
+    display: flex;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    gap: 1rem;
+
+}
+
+.temperament-table .value {
+    width: 100%;
+    text-align: right;
+    color: var(--color-purple);
+}
+
+@media (max-width: 1024px) {
+    .dog-detail-section {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1440px) {
+
+    .dog-detail-section {
+        flex-direction: row;
+        gap: 1rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+
+    .dog-detail-section-parents {
+        display: block;
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+}
+
+.dog-detail-section-parents .litter-group {
+    margin-bottom: 2rem;
+}
+
+.puppy-info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.puppy-price-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.puppy-price {
+    color: var(--color-dark-purple);
+    font-family: var(--font-title);
+    font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    margin: 0;
 }

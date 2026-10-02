@@ -22,4 +22,4 @@
         <livewire:litter-table :slug="$slug" />
     </section>
     <x-footer-dossier />
-</x-layout>
+</x-layout> 
