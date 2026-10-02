@@ -1825,3 +1825,95 @@ footer h5 {
     font-weight: 700;
     margin: 0;
 }
+
+.faq-section {
+    margin-bottom: 1.5rem;
+}
+
+.faq-group {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: white;
+    border: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.faq-group-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--color-table-purple, #eeeaff);
+    color: var(--color-purple);
+    letter-spacing: 0.05rem;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    padding: clamp(0.9rem, 1.8vw, 1.25rem) clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.faq-group-icon {
+    width: clamp(1.3rem, 1.9vw, 1.7rem);
+    height: clamp(1.3rem, 1.9vw, 1.7rem);
+    object-fit: contain;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--color-border-grey, #e5e5e5);
+}
+.faq-item--last {
+    border-bottom: none;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    color: var(--color-purple);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    padding: clamp(1rem, 1.8vw, 1.25rem) clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.faq-arrow {
+    flex-shrink: 0;
+    color: var(--color-purple);
+    font-size: 1.3rem;
+    transition: transform 300ms ease;
+}
+.faq-arrow-open {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 clamp(1.1rem, 2vw, 1.5rem) clamp(1.1rem, 2vw, 1.4rem);
+}
+.faq-answer p {
+    color: var(--color-dark-purple);
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.faq-answer-enter {
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+.faq-answer-enter-start {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+.faq-answer-enter-end {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.faq-answer-leave {
+    transition: opacity 200ms ease;
+}
+.faq-answer-leave-start {
+    opacity: 1;
+}
+.faq-answer-leave-end {
+    opacity: 0;
+}
