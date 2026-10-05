@@ -1,5 +1,6 @@
-<section>
-    <table>
+<section class="dog-table-section">
+    <div class="table-scroll">
+    <table class="bg-white">
         <thead>
             <tr>
                 <th>Nom</th>
@@ -24,9 +25,9 @@
                     </td>
                     <td>
                         @if ($dog->retirement == '0')
-                            <span>Actif</span>
+                            <span class="status-badge active">Actif</span>
                         @else
-                            <span>Retraité</span>
+                            <span class="status-badge retired">Retraité</span>
                         @endif
                     </td>
                     <td>
@@ -47,11 +48,11 @@
                             @csrf
                             @method('DELETE')
                             <button type="button" wire:click="$dispatch('open-delete-modal', {
-                                        title: 'la suppression du chien', 
-                                        message: 'Êtes-vous sûr de vouloir supprimer ce chien ? Cette action est irréversible.', 
-                                        label: 'Supprimer', 
-                                        formId: 'delete-dog-form-{{ $dog->id }}' 
-                                    })">
+                                            title: 'la suppression du chien', 
+                                            message: 'Êtes-vous sûr de vouloir supprimer ce chien ? Cette action est irréversible.', 
+                                            label: 'Supprimer', 
+                                            formId: 'delete-dog-form-{{ $dog->id }}' 
+                                        })">
                                 <i class="bi bi-trash3-fill"></i>
                             </button>
                         </form>
@@ -60,6 +61,7 @@
             @endforeach
         </tbody>
     </table>
+    </div>
     <livewire:delete-confirmation-modal />
     <script>
         document.addEventListener('livewire:init', () => {

@@ -106,7 +106,6 @@
         </form>
     </div>
     <livewire:loading-overlay />
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
         document.querySelector('form').addEventListener('submit', function () {
             const overlay = document.getElementById('loading-overlay');
