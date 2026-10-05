@@ -29,7 +29,7 @@ class UpdatePuppyRequest extends FormRequest
             'price' => 'required|numeric',
             'adoption_date' => 'required|date',
             'weight' => 'nullable|numeric',
-            'status' => 'required|in:disponible,réservé,vendu',
+            'status' => 'required|in:disponible,reservé,vendu',
             'description' => 'nullable|string',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'delete_pictures' => 'nullable|array',

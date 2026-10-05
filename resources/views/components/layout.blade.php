@@ -15,7 +15,7 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
-    <header x-data="{ open: false }" class="sticky top-0 z-50 bg-white shadow-sm">
+    <header x-data="{ open: false }" class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl shadow-sm">
         <nav aria-label="Navigation principale"
             class="flex justify-between items-center px-4 sm:px-8 lg:px-16 xl:px-24 py-3">
             <a href="/" class="flex items-center gap-2 xl:ml-35">

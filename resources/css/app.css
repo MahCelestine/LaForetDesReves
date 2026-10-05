@@ -2582,7 +2582,7 @@ footer h5 {
     position: fixed;
     top: 3.5rem;
     left: 0;
-    height: 100vh;
+    min-height: 100vh;
     width: 16rem;
     background: var(--color-dark-purple);
     color: white;
@@ -2663,12 +2663,7 @@ footer h5 {
     background: #F8F6FF;
     width: 100%;
 }
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-}
+
 
 .dog-table-section .bi-gender-male {
     color: var(--color-blue-male);
@@ -2708,7 +2703,8 @@ html, body {
     .backoffice-sidebar {
         position: sticky;
         top: 0;
-        height: 100vh;
+        min-height: 100vh;
+        align-items: stretch;
         transform: translateX(0); /* Toujours visible */
         box-shadow: none;
     }
@@ -2773,12 +2769,12 @@ html, body {
 }
 .status-badge.active {
     color: #2e7d32;
-    border-color: #a5d6a7;
+    border-color: #2a7d32;
     background: #f1f9f1;
 }
 .status-badge.retired {
-    color: var(--color-grey);
-    border-color: var(--color-border-grey);
+    color: var(--color-dark-grey);
+    border-color: var(--color-dark-grey);
     background: #f7f7f7;
 }
 
@@ -2786,4 +2782,241 @@ html, body {
     cursor: pointer;
     color: var(--color-dark-purple);
     margin: 0 0.3rem;
+}
+
+.form-radio-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 0.4rem;
+}
+
+.form-radio {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: var(--color-dark-purple);
+    font-size: 0.9rem;
+}
+.form-radio input[type="radio"] {
+    accent-color: var(--color-purple);
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.contact-form input[type="file"] {
+    border: 1px dashed var(--color-border-grey, #e5e5e5);
+    border-radius: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+    color: var(--color-dark-purple);
+    background: #F8F6FF;
+    width: 100%;
+}
+
+.form-submit {
+    width: auto;
+    padding: 0.8rem 2rem;
+}
+
+.form-warning {
+    color: var(--color-purple);
+    font-size: 0.85rem;
+    background: #F3F0FF;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.photo-preview {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+.photo-preview img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border-grey, #e5e5e5);
+}
+.photo-preview small {
+    color: var(--color-grey);
+}
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.photo-gallery-item {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+}
+.photo-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border-grey, #e5e5e5);
+}
+
+.photo-delete-btn {
+    position: absolute;
+    top: -0.4rem;
+    right: -0.4rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 9999px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.contact-form select:disabled,
+.contact-form input:disabled,
+.contact-form textarea:disabled {
+    background: #f3f3f3;
+    color: var(--color-grey);
+    cursor: not-allowed;
+}
+
+#content-editor,
+.contact-form textarea[name="content"] {
+    min-height: 10rem;
+}
+
+.litter-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 3px 4px 6px 1px #0000000F;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.litter-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    flex-wrap: wrap;
+}
+
+.litter-toggle {
+    background: none;
+    border: none;
+    color: var(--color-purple);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+.litter-toggle.collapsed {
+    transform: rotate(180deg);
+}
+
+.litter-breed-date {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-purple);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+.litter-breed-date strong {
+    font-weight: 700;
+}
+
+.litter-parents-back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-purple);
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+}
+.litter-parents-back p {
+    color: var(--color-dark-purple);
+    text-decoration: none;
+    margin: 0;
+}
+
+.litter-parents-back .bi-gender-male {
+    color: var(--color-blue-male);
+}
+.litter-parents-back .bi-gender-female {
+    color: var(--color-pink);
+}
+.litter-parents-back-and {
+    color: var(--color-dark-purple);
+}
+
+.litter-card-header .status-badge {
+    margin-left: auto;
+}
+
+.litter-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-dark-purple);
+}
+.litter-actions a,
+.litter-actions button {
+    color: var(--color-dark-purple);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.litter-card-body {
+    border-top: 1px solid var(--color-border-grey, #e5e5e5);
+    padding: 1.5rem;
+}
+
+/* Badge "réservé" en jaune, pour compléter active (vert) et retired (gris) déjà définis */
+.status-badge.reserved {
+    background-color: #fef3c7;
+    color: #d97706;
+    border: 1px solid #d97706;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.9rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    border: 1px solid;
+}
+
+@media (max-width: 768px) {
+    .content-table-section th:nth-child(3),
+    .content-table-section td:nth-child(3),
+    .content-table-section th:nth-child(4),
+    .content-table-section td:nth-child(4),
+    .content-table-section th:nth-child(5),
+    .content-table-section td:nth-child(5) {
+        display: none;
+    }
+    .content-table-section th:nth-child(2),
+    .content-table-section td:nth-child(2){
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .back-button {
+        margin-top: 0.5rem; /* équivalent de my-2 */
+        margin-bottom: 0.5rem;
+    }
 }
