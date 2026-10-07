@@ -6,7 +6,7 @@
         </div>
         <div class="absolute inset-0 bg-dark-purple/65 backdrop-blur-[2.5px]"></div>
         <div class="relative justify-end mb-8 max-md:px-4 md:px-5 xl:ml-40">
-            <a href="{{ route('front.breeds.dogs', $breed->slug) }}" class="link-grey">← Toutes nos reproducteurs</a>
+            <a href="{{ route('front.breeds.dogs', $breed->slug) }}" class="link-grey"><span aria-hidden="true">←</span> Tous nos reproducteurs</a>
             <h1 class="race-title-des">{{ $dog->name_affix }}
                 @if ($dog->is_external)
                     - Externe à l'élevage
@@ -84,7 +84,7 @@
                 <small class="sub-title">Portée</small>
                 <h2 class="title">Chiots</h2>
             </div>
-            <a href="{{ route('front.breeds.puppies', $breed->slug) }}" class="link-purple">Voir plus →</a>
+            <a href="{{ route('front.breeds.puppies', $breed->slug) }}" class="link-purple" aria-label="Voir plus de chiots">Voir plus <span aria-hidden="true">→</span></a>
         </div>
         <div>
             <div>
@@ -96,19 +96,19 @@
                                 class="reproducteur-card-img">
                             <div class="reproducteur-card-body">
                                 <div>
-                                    <h4 class="reproducteur-card-name">{{ $puppy->name }}</h4>
+                                    <h3 class="reproducteur-card-name">{{ $puppy->name }}</h3>
                                     <p class="reproducteur-card-litters">Né le {{ $puppy->birth_date->format('d/m/Y') }} ·
                                         {{ $puppy->sex === 'male' ? 'Mâle' : 'Femelle' }}
                                     </p>
                                 </div>
                                 <div class="reproducteur-card-footer">
                                     <small class="reproducteur-card-meta">{{ $puppy->color }}</small>
-                                    <h5 class="price-card">{{ $puppy->price }} €</h5>
+                                    <span class="price-card">{{ $puppy->price }} €</span>
                                 </div>
                             </div>
                             <div class="p-3 pt-0">
                                 <a href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $puppy->slug]) }}"
-                                    class="link-purple-card-list">Voir plus →</a>
+                                    class="link-purple-card-list" aria-label="Voir plus de détails sur le chiot {{ $puppy->name }}">Voir plus <span aria-hidden="true">→</span></a>
                             </div>
                         </div>
                     @empty
@@ -125,7 +125,7 @@
                                 class="reproducteur-card-img">
                             <div class="reproducteur-card-body">
                                 <div>
-                                    <h4 class="reproducteur-card-name">{{ $puppy->name }}</h4>
+                                    <h3 class="reproducteur-card-name">{{ $puppy->name }}</h3>
                                     <p class="reproducteur-card-litters">Né le {{ $puppy->birth_date->format('d/m/Y') }} ·
                                         {{ $puppy->sex === 'male' ? 'Mâle' : 'Femelle' }}
                                     </p>
@@ -136,7 +136,7 @@
                             </div>
                             <div class="p-3 pt-0">
                                 <a href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $puppy->slug]) }}"
-                                    class="link-purple-card-list">Voir plus →</a>
+                                    class="link-purple-card-list" aria-label="Voir plus de détails sur le chiot {{ $puppy->name }}">Voir plus <span aria-hidden="true">→</span></a>
                             </div>
                         </div>
                     @empty
@@ -211,14 +211,14 @@
                         </div>
                     @endforeach
                 </div>
-                <button @click="prev()" type="button"
+                <button @click="prev()" type="button" aria-label="Image précédente"
                     style="background-color: rgba(79, 52, 199, 0.65); border-radius: 9999px;"
                     class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white shadow-lg hover:opacity-100 focus:outline-none transition-opacity z-10">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
-                <button @click="next()" type="button"
+                <button @click="next()" type="button" aria-label="Image suivante"
                     style="background-color: rgba(79, 52, 199, 0.65); border-radius: 9999px;"
                     class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white shadow-lg hover:opacity-100 focus:outline-none transition-opacity z-10">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -228,7 +228,8 @@
             </div>
             <div class="flex justify-center items-center gap-2 mt-4">
                 @foreach ($dog->pictures as $index => $picture)
-                    <button @click="activeSlide = {{ $index }}" type="button" class="h-3 transition-all duration-300" :style="`
+                    <button @click="activeSlide = {{ $index }}" type="button" aria-label="Aller à l'image {{ $index + 1 }}"
+                        class="h-3 transition-all duration-300" :style="`
                                                                                             border-radius: 9999px;
                                                                                             width: ${(activeSlide % realTotal) === {{ $index }} ? '32px' : '12px'};
                                                                                             background-color: ${(activeSlide % realTotal) === {{ $index }} ? '#4F34C7' : '#D1D5DB'};

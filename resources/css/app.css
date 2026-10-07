@@ -1649,9 +1649,9 @@ footer h5 {
 .puppy-status-badge[data-status="vendu"] {
     background-color: var(--color-border-grey);
     /* #E5E5E5 pour le background */
-    color: var(--color-light-grey);
+    color: var(--color-dark-grey);
     /* #C8C8C8 pour le texte */
-    border-color: var(--color-light-grey);
+    border-color: var(--color-dark-grey);
     /* #C8C8C8 pour la bordure */
 }
 
@@ -3019,4 +3019,30 @@ footer h5 {
         margin-top: 0.5rem; /* équivalent de my-2 */
         margin-bottom: 0.5rem;
     }
+}
+
+.site-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
+}
+
+.site-breadcrumb a {
+    color: var(--color-purple);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.site-breadcrumb a:hover {
+    color: var(--color-dark-purple);
+}
+
+.site-breadcrumb-sep {
+    color: var(--color-grey);
+}
+
+.site-breadcrumb-current {
+    color: var(--color-dark-purple);
+    font-weight: 600;
 }

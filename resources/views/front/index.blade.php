@@ -14,8 +14,8 @@
                 sélectionnées pour leur caractère équilibré et leur santé irréprochable.
             </p>
             <div class="md:flex tracking-wider mt-2 md:mt-4">
-                <a href="/nos-races" class="btn-banniere purple md:m-0 mb-3">Découvrir nos races →</a>
-                <a href="/nous-contacter" class="btn-banniere transparent md:m-0 mb-3">Prendre contact →</a>
+                <a href="/nos-races" class="btn-banniere purple md:m-0 mb-3">Découvrir nos races <span aria-hidden="true">→</span></a>
+                <a href="/nous-contacter" class="btn-banniere transparent md:m-0 mb-3">Prendre contact <span aria-hidden="true">→</span></a>
             </div>
         </div>
     </section>
@@ -40,7 +40,7 @@
                     <span class="race-tag text-light-blue tracking-wider">Social</span>
                     <p class="race-text text-grey">Le Staffordshire Bull Terrier est un chien affectueux, loyal et
                         courageux.</p>
-                    <span class="race-link inline-block text-purple tracking-wider">Voir la race →</span>
+                    <span class="race-link inline-block text-purple tracking-wider">Voir la race <span aria-hidden="true"><span aria-hidden="true"><span aria-hidden="true"><span aria-hidden="true">→</span></span></span></span></span>
                 </div>
             </a>
 
@@ -55,7 +55,7 @@
                 <div>
                     <span class="race-tag text-light-blue tracking-wider">Social</span>
                     <p class="race-text text-grey">Le Samoyède est un chien affectueux, loyal et courageux.</p>
-                    <span class="race-link inline-block text-purple tracking-wider">Voir la race →</span>
+                    <span class="race-link inline-block text-purple tracking-wider">Voir la race <span aria-hidden="true"><span aria-hidden="true"><span aria-hidden="true"><span aria-hidden="true"><span aria-hidden="true">→</span></span></span></span></span></span>
                 </div>
             </a>
 
@@ -70,7 +70,7 @@
                 <div>
                     <span class="race-tag text-light-blue tracking-wider">Social</span>
                     <p class="race-text text-grey">Le Berger Américain est un chien affectueux, loyal et courageux.</p>
-                    <span class="race-link inline-block text-purple tracking-wider">Voir la race →</span>
+                    <span class="race-link inline-block text-purple tracking-wider">Voir la race <span aria-hidden="true"><span aria-hidden="true"><span aria-hidden="true"><span aria-hidden="true"><span aria-hidden="true">→</span></span></span></span></span></span>
                 </div>
             </a>
         </div>
@@ -118,21 +118,21 @@
     </section>
     <section class="lg:py-15 pt-15 pb-5 overflow-x-clip">
         <div class="text-center pb-10">
-            <h2 class="sub-title">Notre engagement</h2>
-            <h1 class="title">La qualité avant tout</h1>
-            <h3 class="title-description">Chacune sélectionnée pour ses qualités caractérielles, sa santé et ses
-                aptitude </h3>
+            <h3 class="sub-title">Notre engagement</h3>
+            <h2 class="title">La qualité avant tout</h2>
+            <h4 class="title-description">Chacune sélectionnée pour ses qualités caractérielles, sa santé et ses
+                aptitude </h4>
         </div>
 
         <div class="engagement-wrap ">
 
-            <svg class="engagement-wave wave-desktop" viewBox="0 0 1200 200" preserveAspectRatio="none"
+            <svg class="engagement-wave wave-desktop" aria-hidden="true" viewBox="0 0 1200 200" preserveAspectRatio="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M-205,40 C-90,40 -90,160 25,160 C140,160 140,40 255,40 C370,40 370,160 485,160 C600,160 600,40 715,40 C830,40 830,160 945,160 C1060,160 1060,40 1175,40" />
             </svg>
 
-            <svg class="engagement-wave wave-tablet" viewBox="0 0 200 800" preserveAspectRatio="none"
+            <svg class="engagement-wave wave-tablet" aria-hidden="true" viewBox="0 0 200 800" preserveAspectRatio="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path d="M40,73 L160,291 L40,509 L160,727" />
             </svg>
@@ -178,7 +178,6 @@
 
             </div>
         </div>
-    </section>
     </section>
     <x-footer-dossier />
 </x-layout>

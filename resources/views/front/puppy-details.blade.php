@@ -6,7 +6,7 @@
         </div>
         <div class="absolute inset-0 bg-dark-purple/65 backdrop-blur-[2.5px]"></div>
         <div class="relative justify-end mb-8 max-md:px-4 md:px-5 xl:ml-40">
-            <a href="{{ route('front.breeds.puppies', $breed->slug) }}" class="link-grey">← Toutes nos chiots</a>
+            <a href="{{ route('front.breeds.puppies', $breed->slug) }}" class="link-grey"><span aria-hidden="true">←</span> Tous nos chiots</a>
             <h1 class="race-title-des">{{ $puppy->name }}</h1>
         </div>
     </section>
@@ -66,7 +66,7 @@
             </table>
             <div class="puppy-price-block">
                 <h5 class="puppy-price">{{ $puppy->price }} €</h5>
-                <a href="/nous-contacter" class="btn-purple-normal">Déposer son dossier →</a>
+                <a href="/nous-contacter" class="btn-purple-normal">Déposer son dossier <span aria-hidden="true">→</span></a>
             </div>
         </div>
     </section>
@@ -97,7 +97,7 @@
                             <div class="litter-parent-footer">
                                 <span class="litter-parent-date">{{ $dad->birth_date->format('d/m/Y') }}</span>
                                 <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $dad->slug]) }}"
-                                    class="litter-parent-link">Voir le parent →</a>
+                                    class="litter-parent-link" aria-label="Voir la fiche du père {{ $dad->name_affix }}">Voir le parent <span aria-hidden="true">→</span></a>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                             <div class="litter-parent-footer">
                                 <span class="litter-parent-date">{{ $mom->birth_date->format('d/m/Y') }}</span>
                                 <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $mom->slug]) }}"
-                                    class="litter-parent-link">Voir le parent →</a>
+                                    class="litter-parent-link" aria-label="Voir la fiche de la mère {{ $mom->name_affix }}">Voir le parent <span aria-hidden="true">→</span></a>
                             </div>
                         </div>
                     </div>
@@ -150,19 +150,19 @@
                             </div>
                             <div class="reproducteur-card-body">
                                 <div>
-                                    <h4 class="reproducteur-card-name">{{ $sibling->name }}</h4>
+                                    <h3 class="reproducteur-card-name">{{ $sibling->name }}</h3>
                                     <p class="reproducteur-card-litters">Né le {{ $sibling->birth_date->format('d/m/Y') }} ·
                                         {{ $sibling->sex === 'male' ? 'Mâle' : 'Femelle' }}
                                     </p>
                                 </div>
                                 <div class="reproducteur-card-footer">
                                     <small class="reproducteur-card-meta">{{ $sibling->color }}</small>
-                                    <h5 class="price-card">{{ $sibling->price }} €</h5>
+                                    <span class="price-card">{{ $sibling->price }} €</span>
                                 </div>
                             </div>
                             <div class="p-3 pt-0">
                                 <a href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $sibling->slug]) }}"
-                                    class="link-purple-card-list">Voir plus →</a>
+                                    class="link-purple-card-list" aria-label="Voir les détails du chiot {{ $sibling->name }}">Voir plus <span aria-hidden="true">→</span></a>
                             </div>
                         </div>
                     @endif
@@ -219,7 +219,7 @@
                     {{-- 1. Toutes les images principales du chiot --}}
                     @foreach ($puppy->pictures as $picture)
                         <div class="w-1/3 flex-shrink-0 px-1">
-                            <img src="{{ asset('storage/' . $picture->image_path) }}" alt="Photo de {{ $puppy->common_name }}"
+                            <img src="{{ asset('storage/' . $picture->image_path) }}" alt="Photo de {{ $puppy->name }}"
                                 class="w-full h-[300px] md:h-[450px] object-cover" />
                         </div>
                     @endforeach
@@ -234,14 +234,14 @@
 
                     @foreach ($clones as $picture)
                         <div class="w-1/3 flex-shrink-0 px-1">
-                            <img src="{{ asset('storage/' . $picture->image_path) }}" alt="Photo de {{ $puppy->common_name }}"
+                            <img src="{{ asset('storage/' . $picture->image_path) }}" alt="Photo de {{ $puppy->name }}"
                                 class="w-full h-[300px] md:h-[450px] object-cover" />
                         </div>
                     @endforeach
                 </div>
 
                 <!-- Flèche Précédent (Bouton violet rond) -->
-                <button @click="prev()" type="button"
+                <button @click="prev()" type="button" aria-label="Image précédente"
                     style="background-color: rgba(79, 52, 199, 0.65); border-radius: 9999px;"
                     class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white shadow-lg hover:opacity-100 focus:outline-none transition-opacity z-10">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -250,7 +250,7 @@
                 </button>
 
                 <!-- Flèche Suivant (Bouton violet rond) -->
-                <button @click="next()" type="button"
+                <button @click="next()" type="button" aria-label="Image suivante"
                     style="background-color: rgba(79, 52, 199, 0.65); border-radius: 9999px;"
                     class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white shadow-lg hover:opacity-100 focus:outline-none transition-opacity z-10">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -262,7 +262,8 @@
             <!-- Indicateurs (Points gris & violet actif 100% arrondis) -->
             <div class="flex justify-center items-center gap-2 mt-4">
                 @foreach ($puppy->pictures as $index => $picture)
-                    <button @click="activeSlide = {{ $index }}" type="button" class="h-3 transition-all duration-300" :style="`
+                    <button @click="activeSlide = {{ $index }}" type="button" aria-label="Aller à l'image {{ $index + 1 }}"
+                        class="h-3 transition-all duration-300" :style="`
                                                             border-radius: 9999px;
                                                             width: ${(activeSlide % realTotal) === {{ $index }} ? '32px' : '12px'};
                                                             background-color: ${(activeSlide % realTotal) === {{ $index }} ? '#4F34C7' : '#D1D5DB'};

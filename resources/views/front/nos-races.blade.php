@@ -37,7 +37,7 @@
                 </div>
                 <div class="race-feature-footer">
                     <a href="{{ route('front.breeds.show', 'samoyede') }}"
-                        class="btn-purple-normal tracking-wider">Découvrir la race →</a>
+                        class="btn-purple-normal tracking-wider">Découvrir la race <span aria-hidden="true">→</span></a>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="race-feature-footer">
                         <a href="{{ route('front.breeds.show', 'staffordshire-bull-terrier') }}"
-                            class="btn-purple-normal tracking-wider">Découvrir la race →</a>
+                            class="btn-purple-normal tracking-wider">Découvrir la race <span aria-hidden="true">→</span></a>
                     </div>
                 </div>
             </div>
@@ -100,11 +100,10 @@
                     </div>
                     <div class="race-feature-footer">
                         <a href="{{ route('front.breeds.show', 'berger-americain') }}"
-                            class="btn-purple-normal tracking-wider">Découvrir la race →</a>
+                            class="btn-purple-normal tracking-wider">Découvrir la race <span aria-hidden="true">→</span></a>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <x-footer-dossier />

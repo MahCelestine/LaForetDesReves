@@ -47,7 +47,9 @@ class BreedController extends Controller
 
     public function showBreedDogs(string $slug)
     {
-        return view('front.nos-reproducteurs', compact('slug'));
+        $breed = Breed::where('slug', $slug)->firstOrFail();
+
+        return view('front.nos-reproducteurs', compact('breed', 'slug'));
     }
 
     public function showBreedPuppies(string $slug)
@@ -92,7 +94,7 @@ class BreedController extends Controller
             ->with(['pictures', 'litter.puppies', 'litter.dad', 'litter.mom'])
             ->firstOrFail();
 
-        $litterPuppies = $puppy->litter->puppies->reject(function($sibling) use ($puppy) {
+        $litterPuppies = $puppy->litter->puppies->reject(function ($sibling) use ($puppy) {
             return $sibling->id === $puppy->id;
         });
 

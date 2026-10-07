@@ -12,32 +12,31 @@
                             alt="photo du reproducteur {{ $litter->dad->common_name }}" class="litter-parent-img">
 
                         <div class="litter-parent-body">
-                            <h4 class="litter-parent-name">{{ $litter->dad->common_name }}</h4>
+                            <h3 class="litter-parent-name">{{ $litter->dad->common_name }}</h3>
                             <p class="litter-parent-meta">{{ $litter->dad->sex === 'male' ? 'Mâle' : 'Femelle' }}</p>
 
                             <div class="litter-parent-footer">
                                 <span class="litter-parent-date">{{ $litter->dad->birth_date->format('Y') }}</span>
                                 <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $litter->dad->slug]) }}"
-                                    class="litter-parent-link">Voir plus →</a>
+                                    class="litter-parent-link" aria-label="Voir plus de détails sur le père : {{ $litter->dad->common_name }}">Voir plus <span aria-hidden="true">→</span></a>
                             </div>
                         </div>
                     </div>
 
                     <span class="litter-separator-et">et</span>
 
-                    <!-- Carte de la Mère -->
                     <div class="litter-parent-card">
                         <img src="{{ asset('storage/' . $litter->mom->image_path) }}"
                             alt="photo de la reproductrice {{ $litter->mom->common_name }}" class="litter-parent-img">
 
                         <div class="litter-parent-body">
-                            <h4 class="litter-parent-name">{{ $litter->mom->common_name }}</h4>
+                            <h3 class="litter-parent-name">{{ $litter->mom->common_name }}</h3>
                             <p class="litter-parent-meta">{{ $litter->mom->sex === 'male' ? 'Mâle' : 'Femelle' }}</p>
 
                             <div class="litter-parent-footer">
                                 <span class="litter-parent-date">{{ $litter->mom->birth_date->format('Y') }}</span>
                                 <a href="{{ route('front.breeds.dog-details', ['slug' => $breed->slug, 'dogSlug' => $litter->mom->slug]) }}"
-                                    class="litter-parent-link">Voir plus →</a>
+                                    class="litter-parent-link" aria-label="Voir plus de détails sur la mère : {{ $litter->mom->common_name }}">Voir plus <span aria-hidden="true">→</span></a>
                             </div>
                         </div>
                     </div>
@@ -75,12 +74,12 @@
                                 </div>
                                 <div class="reproducteur-card-footer">
                                     <small class="reproducteur-card-meta">{{ $puppy->color }}</small>
-                                    <h5 class="price-card">{{ $puppy->price }} €</h5>
+                                    <span class="price-card">{{ $puppy->price }} €</span>
                                 </div>
                             </div>
                             <div class="p-3 pt-0">
                                 <a href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $puppy->slug]) }}"
-                                    class="link-purple-card-list">Voir plus →</a>
+                                    class="link-purple-card-list" aria-label="Voir plus de détails sur le chiot {{ $puppy->name }}">Voir plus <span aria-hidden="true">→</span></a>
                             </div>
                         </div>
                     @endforeach

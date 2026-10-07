@@ -214,7 +214,7 @@
         <div class="dogs-grid">
             @foreach ($randomDogs as $dog)
                 <div class="dog-card">
-                    <img src="{{ asset('storage/' . $dog->image_path) }}" alt="photo de {{ $dog->common_name }}"
+                    <img src="{{ asset('storage/' . $dog->image_path) }}" alt="{{ $dog->common_name }}, reproducteur de l'élevage"
                         class="dog-card-img" />
                     <div class="dog-card-body">
                         <p class="dog-card-name">{{ $dog->common_name }}</p>
@@ -237,11 +237,11 @@
         <div class="dogs-grid">
             @foreach ($randomPuppies as $puppy)
                 <div class="dog-card">
-                    <img src="{{ asset('storage/' . $puppy->image_path) }}" alt="photo du chiot {{ $puppy->name }}" class="puppy-card-img" />
+                    <img src="{{ asset('storage/' . $puppy->image_path) }}" alt="{{ $puppy->name }}, chiot de l'élevage" class="puppy-card-img" />
                     <div class="dog-card-body">
                         <p class="dog-card-name">{{ $puppy->name }}</p>
                         <small class="dog-card-sex">{{ $puppy->sex === 'male' ? 'Mâle' : 'Femelle' }}</small>
-                        <small class="dog-card-birth">{{ $puppy->birth_date->format('d/m/Y') }}</small>
+                        <small class="dog-card-birth">{{ $puppy->birth_date->format('Y') }}</small>
                     </div>
                     <a
                         href="{{ route('front.breeds.puppy-details', ['slug' => $breed->slug, 'puppySlug' => $puppy->slug]) }}"

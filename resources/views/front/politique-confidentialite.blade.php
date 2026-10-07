@@ -60,7 +60,7 @@
                     Pour exercer ces droits, vous pouvez contacter l'éleveuse à l'adresse e-mail suivante : <strong>[Adresse e-mail de contact]</strong>.
                 </p>
                 <p>
-                    En cas de contestation, vous avez également le droit de déposer une réclamation auprès de la CNIL (Commission Nationale de l'Informatique et des Libertés) sur leur site officiel : <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>.
+                    En cas de contestation, vous avez également le droit de déposer une réclamation auprès de la CNIL (Commission Nationale de l'Informatique et des Libertés) sur leur site officiel : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">cnil.fr</a>.
                 </p>
             </div>
 

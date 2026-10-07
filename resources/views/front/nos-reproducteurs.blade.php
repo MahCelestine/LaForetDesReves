@@ -1,4 +1,11 @@
 <x-layout>
+    <div class="site-breadcrumb md:py-10 pt-4 pb-2 xl:px-40 md:px-5 max-md:px-2" aria-label="Fil d'Ariane">
+        <a href="/nos-races">Nos races</a>
+        <span class="site-breadcrumb-sep">/</span>
+        <a href="{{ route('front.breeds.show', $breed->slug) }}">{{ $breed->name }}</a>
+        <span class="site-breadcrumb-sep">/</span>
+        <span class="site-breadcrumb-current">Nos reproducteurs</span>
+    </div>
     <div class="md:py-10 py-4 xl:px-40 md:px-5 max-md:px-2">
         <h2 class="sub-title">Races</h2>
         <h1 class="title">Nos reproducteurs</h1>
